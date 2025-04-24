@@ -1,0 +1,42 @@
+import { NextFetchEvent, NextResponse } from "next/server";
+import withAuth, { NextRequestWithAuth } from "next-auth/middleware";
+
+type Environment = "production" | "development" | "other";
+
+const authMiddleware = withAuth({
+  pages: {
+    signIn: "/auth/sign-in",
+  },
+});
+
+const authPathsScopes = [
+  "/profile",
+];
+
+async function middleware(request: NextRequestWithAuth, event: NextFetchEvent) {
+  const currentEnv = process.env.NODE_ENV as Environment;
+
+  if (
+    currentEnv === "production" &&
+    request.headers.get("x-forwarded-proto") !== "https"
+  ) {
+    return NextResponse.redirect(
+      `https://${request.headers.get("host")}${request.nextUrl.pathname}`,
+      301,
+    );
+  }
+
+  const path = request.nextUrl.pathname;
+
+  if (authPathsScopes.some((authPath) => path.startsWith(authPath))) {
+    return authMiddleware(request, event);
+  }
+
+  return NextResponse.next();
+}
+
+export default middleware;
+
+export const config = {
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|auth).*)"],
+};

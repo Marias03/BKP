@@ -1,7 +1,13 @@
 "use client";
 
 import Datos from "@/components/formularios/Datosform";
+import Registracion from "@/components/formularios/Registracionform";
+import Cmedico from "@/components/formularios/Cmedicoform";
+import Passport from "@/components/formularios/passport";
+import FingerPrints from "@/components/formularios/fingerprintsfrom";
+import Visa from "@/components/formularios/visaform";
 import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
+
 export default function Documents() {
   return (
     <>
@@ -17,11 +23,21 @@ export default function Documents() {
         <TabPanel>
           <Datos />
         </TabPanel>
-        <TabPanel></TabPanel>
-        <TabPanel>Content for Tab 3</TabPanel>
-        <TabPanel>Content for Tab 4</TabPanel>
-        <TabPanel>Content for Tab 5</TabPanel>
-        <TabPanel>Content for Tab 6</TabPanel>
+        <TabPanel>
+          <Registracion />
+        </TabPanel>
+        <TabPanel>
+          <Cmedico />
+        </TabPanel>
+        <TabPanel>
+          <Passport />
+        </TabPanel>
+        <TabPanel>
+          <FingerPrints />
+        </TabPanel>
+        <TabPanel>
+          <Visa />
+        </TabPanel>
       </Tabs>
     </>
   );

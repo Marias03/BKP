@@ -25,16 +25,19 @@ model User {
   role          String
   password      String
   userInfo       UserInfo[]
+  citas         Cita[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map("users")
   Cmedico Cmedico[]
   Passport Passport[]
   FingerPrints FingerPrints[]
   Visa Visa[]
+
+  @@map("users") 
 }
+
 
 model Account {
   userId            String
@@ -129,6 +132,7 @@ id String @id @default(cuid())
   userId String
   seriall String
   numberpas String
+  emisionp String
   datepas String 
   imageUrl  String?
   
@@ -168,4 +172,19 @@ model Visa {
   @@map("Visa")
 
 }
+
+model Cita {
+  id          Int      @id @default(autoincrement())
+  fecha       DateTime
+  descripcion String?
+  clienteId   String
+  direccion   String 
+  cliente     User   @relation(fields: [clienteId], references: [id])
+  creadoEn    DateTime @default(now())
+  actualizadoEn DateTime @updatedAt
+
+  @@index([fecha])
+  @@map("Cita")
+}
+
   

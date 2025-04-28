@@ -5,7 +5,7 @@ import prisma from "../lib/prisma/client";
 import { currentUser } from "../lib/dal/user";
 import { serialize } from "v8";
 
-export default async function createPassport(
+export default async function createAgregarcita(
   _initialData: any,
   formData: FormData
 ) {
@@ -19,23 +19,23 @@ export default async function createPassport(
       };
 
     const data = {
-      serial: formData.get("seriall") as string,
-      numberdoc: formData.get("numberpas") as string,
-      datedoc: formData.get("datepasc") as string,
-      emisionp: formData.get("emisionp") as String,
-      imageUrl: formData.get("imageUrl") as string,
+      fecha: formData.get(" fecha") as string,
+      descripcion: formData.get("descripcion") as string,
+      direccion: formData.get("direccion") as string,
+      creadoEn: formData.get("creadoen") as string,
+      actualizadoEn: formData.get("actializadoen") as string,
     };
 
     console.log(JSON.stringify(data, null, 2));
 
-    if (!data.serial || !data.datedoc) {
-      throw new Error("Nombre y apellidos son requeridos");
+    if (!data.fecha || !data.actualizadoEn) {
+      throw new Error("Fecha es requerida ");
     }
 
-    await prisma.cmedico.create({
+    await prisma.cita.create({
       data: {
         ...data,
-        userId: user.id || "",
+        clienteId: user.id || "",
       },
     });
 

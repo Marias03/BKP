@@ -2,42 +2,109 @@
 
 import createRegistration from "@/actions/createRegistration";
 import { useActionState } from "react";
-export default function registracion() {
+
+export default function Registracion() {
   const [state, formAction] = useActionState(createRegistration, null);
   return (
-    <div className="flex justify-start ml-4">
+    <div className="flex justify-center pt-4">
       <form
         action={formAction}
-        className="flex flex-col gap-2 max-w-sm bg-blue-200 p-4 rounded"
+        className="flex flex-col gap-2 w-full max-w-sm bg-blue-400 p-4 rounded-md"
       >
-        <label> residencia actual</label>
-        <input type="text" name="residence" />
+        <h1 className="text-lg font-bold text-white text-center mb-2">
+          Añade tu registracion
+        </h1>
 
-        <label>Ciudad </label>
-        <input type="text" name="city" />
+        <div className="space-y-1">
+          <label className="block text-white text-sm font-medium">
+            Residencia actual:
+          </label>
+          <input
+            type="text"
+            name="residence"
+            className="w-full p-1 rounded border border-gray-300 text-sm"
+          />
+        </div>
 
-        <label>direccion </label>
-        <input type="text" name="adress" />
+        <div className="space-y-1">
+          <label className="block text-white text-sm font-medium">
+            Ciudad:
+          </label>
+          <input
+            type="text"
+            name="city"
+            className="w-full p-1 rounded border border-gray-300 text-sm"
+          />
+        </div>
 
-        <label> Numero de apartamento (habitacion)</label>
-        <input type="text" name="apartamentNumber" />
+        <div className="space-y-1">
+          <label className="block text-white text-sm font-medium">
+            Dirección:
+          </label>
+          <input
+            type="text"
+            name="adress"
+            className="w-full p-1 rounded border border-gray-300 text-sm"
+          />
+        </div>
 
-        <label>Período de validez del registro migratorio: Desde:</label>
-        <input type="date" name="validation" />
+        <div className="space-y-1">
+          <label className="block text-white text-sm font-medium">
+            Número de apartamento/habitación:
+          </label>
+          <input
+            type="text"
+            name="apartamentNumber"
+            className="w-full p-1 rounded border border-gray-300 text-sm"
+          />
+        </div>
 
-        <label>hasta</label>
-        <input type="date" name="finish" />
+        <div className="grid grid-cols-2 gap-2">
+          <div className="space-y-1">
+            <label className="block text-white text-sm font-medium">
+              Validez desde:
+            </label>
+            <input
+              type="date"
+              name="validation"
+              className="w-full p-1 rounded border border-gray-300 text-sm"
+            />
+          </div>
+          <div className="space-y-1">
+            <label className="block text-white text-sm font-medium">
+              Hasta:
+            </label>
+            <input
+              type="date"
+              name="finish"
+              className="w-full p-1 rounded border border-gray-300 text-sm"
+            />
+          </div>
+        </div>
 
-        <label>Url </label>
-        <input type="text" name="imageUrl" />
+        <div className="space-y-1">
+          <label className="block text-white text-sm font-medium">URL:</label>
+          <input
+            type="text"
+            name="imageUrl"
+            className="w-full p-1 rounded border border-gray-300 text-sm"
+          />
+        </div>
 
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
-          Submit
+        <button
+          type="submit"
+          className="mt-2 bg-blue-700 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-600 transition-colors"
+        >
+          Enviar
         </button>
 
-        {state?.error && <p className="text-red-500">{state.error}</p>}
+        {state?.error && (
+          <p className="text-red-500 text-center text-sm mt-1">{state.error}</p>
+        )}
         {state?.success && (
-          <p className="text-green-500">Data saved successfully!</p>
+          <p className="text-green-500 text-center text-sm mt-1">
+            ¡Registro guardado!
+          </p>
         )}
       </form>
     </div>

@@ -1,35 +1,89 @@
 "use client";
 
 import createCmedico from "@/actions/createPassport";
-
 import { useActionState } from "react";
-export default function cmedico() {
+
+export default function Cmedico() {
   const [state, formAction] = useActionState(createCmedico, null);
   return (
-    <div className="flex justify-start ml-4">
+    <div className="flex justify-center pt-4">
       <form
         action={formAction}
-        className="flex flex-col gap-2 max-w-sm bg-blue-200 p-4 rounded"
+        className="flex flex-col gap-2 w-full max-w-sm bg-blue-400  p-4 rounded-md"
       >
-        <label> serie del documento</label>
-        <input type="text" name="seriall" />
+        <h1 className="text-lg font-bold text-white text-center mb-2">
+          Añade tu Pasaporte
+        </h1>
 
-        <label>Numero de documento </label>
-        <input type="text" name="numberpas" />
+        <div className="space-y-1">
+          <label className="block text-white text-sm font-medium">
+            Serie del documento:
+          </label>
+          <input
+            type="text"
+            name="seriall"
+            className="w-full p-1.5 rounded border border-gray-300 text-sm"
+          />
+        </div>
 
-        <label>Fecha de emisión del documento</label>
-        <input type="date" name="datepas" />
+        <div className="space-y-1">
+          <label className="block text-white text-sm font-medium">
+            Número de documento:
+          </label>
+          <input
+            type="text"
+            name="numberpas"
+            className="w-full p-1.5 rounded border border-gray-300 text-sm"
+          />
+        </div>
 
-        <label>Url </label>
-        <input type="text" name="imageUrl" />
+        <div className="space-y-1">
+          <label className="block text-white text-sm font-medium">
+            Emitido por:
+          </label>
+          <input
+            type="text"
+            name="emisionp"
+            className="w-full p-1.5 rounded border border-gray-300 text-sm"
+          />
+        </div>
 
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
-          Submit
+        <div className="space-y-1">
+          <label className="block text-white text-sm font-medium">
+            Fecha de emisión:
+          </label>
+          <input
+            type="date"
+            name="datepas"
+            className="w-full p-1.5 rounded border border-gray-300 text-sm"
+          />
+        </div>
+
+        <div className="space-y-1">
+          <label className="block text-white text-sm font-medium">
+            URL del documento:
+          </label>
+          <input
+            type="text"
+            name="imageUrl"
+            className="w-full p-1.5 rounded border border-gray-300 text-sm"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="mt-2 bg-blue-700 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-600 transition-colors"
+        >
+          Guardar
         </button>
 
-        {state?.error && <p className="text-red-500">{state.error}</p>}
+        {state?.error && (
+          <p className="text-red-500 text-center text-sm mt-1">{state.error}</p>
+        )}
         {state?.success && (
-          <p className="text-green-500">Data saved successfully!</p>
+          <p className="text-green-500 text-center text-sm mt-1">
+            ¡Pasaporte guardado exitosamente!
+          </p>
         )}
       </form>
     </div>

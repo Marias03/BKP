@@ -1,19 +1,19 @@
 import { currentUser } from "@/lib/dal/user";
-import SignInSection from "@/sections/SignInSection";
+import SignUpSection from "@/sections/SignUpSection";
 import { redirect } from "next/navigation";
 
-type SignInProps = {
+type SignUpProps = {
   searchParams: Promise<{
     callbackUrl: string | undefined;
   }>;
-}
+};
 
-export default async function SignInPage({ searchParams }: SignInProps) {
+export default async function SignUpPage({ searchParams }: SignUpProps) {
   const { callbackUrl } = await searchParams;
   const user = await currentUser();
   const sessionCallback = callbackUrl || "/";
 
-  if(user) redirect("/dashboard"); 
+  if (user) redirect("/dashboard");
 
-  return <SignInSection sessionCallback={sessionCallback}/>
+  return <SignUpSection sessionCallback={sessionCallback} />;
 }

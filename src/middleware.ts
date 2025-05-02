@@ -1,6 +1,9 @@
 import { NextFetchEvent, NextResponse } from "next/server";
 import withAuth, { NextRequestWithAuth } from "next-auth/middleware";
 
+// import createMiddleware from "next-intl/middleware";
+// import { routing } from "./i18n/routing";
+
 type Environment = "production" | "development" | "other";
 
 const authMiddleware = withAuth({
@@ -9,12 +12,13 @@ const authMiddleware = withAuth({
   },
 });
 
-const authPathsScopes = [
-  "/profile",
-];
+const authPathsScopes = ["/profile"];
 
 async function middleware(request: NextRequestWithAuth, event: NextFetchEvent) {
   const currentEnv = process.env.NODE_ENV as Environment;
+
+  // if()
+  // createMiddleware(routing);
 
   if (
     currentEnv === "production" &&
@@ -22,7 +26,7 @@ async function middleware(request: NextRequestWithAuth, event: NextFetchEvent) {
   ) {
     return NextResponse.redirect(
       `https://${request.headers.get("host")}${request.nextUrl.pathname}`,
-      301,
+      301
     );
   }
 

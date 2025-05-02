@@ -33,7 +33,7 @@ export const Navbar = () => {
               className={`
               text-lg px-4 py-2 font-light tracking-wide transition-colors
               ${
-                path === "/necesarios"
+                path === "necesarios"
                   ? "text-blue-900 font-medium border-b border-blue-900"
                   : "text-blue-600 hover:text-blue-800"
               }

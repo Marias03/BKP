@@ -1,10 +1,8 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
-const nextConfig: NextConfig = {
-    i18n: {
-      locales: ['en', 'es', 'fr'], // Tus idiomas soportados
-      defaultLocale: 'en', // Idioma por defecto
-    },
-};
+const nextConfig: NextConfig = {};
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin();
+
+export default withNextIntl(nextConfig);

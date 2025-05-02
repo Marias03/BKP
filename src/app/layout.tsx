@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { dir } from "i18next";
-import { languages } from "@/i18n/settings"; // Lo vamos a crear
 import Providers from "./providers";
 import { Navbar } from "@/components/ui";
 
@@ -15,10 +13,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-export async function generateStaticParams() {
-  return languages.map((lng) => ({ locale: lng }));
-}
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -33,7 +27,7 @@ export default function RootLayout({
   params: { locale: string };
 }>) {
   return (
-    <html lang={params.locale} dir={dir(params.locale)}>
+    <html>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

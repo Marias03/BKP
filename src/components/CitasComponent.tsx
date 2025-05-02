@@ -5,7 +5,7 @@ import FormCita from "@/components/formularios/FormCita";
 import ListaCitas from "@/components/ListaCitas";
 import { useState, useEffect } from "react";
 
-export default function AGENDARPAGE() {
+export default function CitasComponent() {
   const [citas, setCitas] = useState<any[]>([]);
   const [vista, setVista] = useState("lista");
   const [direccion, setDireccion] = useState("");
@@ -39,7 +39,8 @@ export default function AGENDARPAGE() {
   return (
     <div className="container mx-auto p-4 max-w-6xl">
       <h1 className="text-3xl font-bold text-center mb-8">
-        Sistema de Agendación
+        {" "}
+        Agendacion de citas
       </h1>
 
       <div className="flex gap-4 mb-6 justify-center">

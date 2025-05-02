@@ -1,10 +1,10 @@
 "use client";
 
-import createCmedico from "@/actions/createPassport";
+import createPassport from "@/actions/createPassport";
 import { useActionState } from "react";
 
 export default function Cmedico() {
-  const [state, formAction] = useActionState(createCmedico, null);
+  const [state, formAction] = useActionState(createPassport, null);
   return (
     <div className="flex justify-center pt-4">
       <form

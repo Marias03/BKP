@@ -18,23 +18,13 @@ export default async function createPassport(
         error: "No current user",
       };
 
-    const data = {
-      serial: formData.get("seriall") as string,
-      numberdoc: formData.get("numberpas") as string,
-      datedoc: formData.get("datepasc") as string,
-      emisionp: formData.get("emisionp") as String,
-      imageUrl: formData.get("imageUrl") as string,
-    };
-
-    console.log(JSON.stringify(data, null, 2));
-
-    if (!data.serial || !data.datedoc) {
-      throw new Error("Nombre y apellidos son requeridos");
-    }
-
-    await prisma.cmedico.create({
+    await prisma.passport.create({
       data: {
-        ...data,
+        seriall: formData.get("seriall") as string,
+        numberpas: formData.get("numberpas") as string,
+        datepas: formData.get("datepas") as string,
+        emisionp: formData.get("emisionp") as string,
+        imageUrl: formData.get("imageUrl") as string,
         userId: user.id || "",
       },
     });

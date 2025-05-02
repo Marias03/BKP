@@ -17,27 +17,17 @@ export default async function createRegistration(
         error: "No current user",
       };
 
-    const data = {
-      residence: formData.get("residence") as string,
-      city: formData.get("city") as string,
-      adress: formData.get("adress") as string,
-      apartamentNumber: formData.get("apartamentNumber") as string,
-      validation: formData.get("validation") as string,
-      finished: formData.get("finished") as string,
-      imageUrl: formData.get("imageUrl") as string,
-    };
-
-    console.log(JSON.stringify(data, null, 2));
-
-    if (!data.residence || !data.apartamentNumber) {
-      throw new Error("Nombre y apellidos son requeridos");
-    }
-
-    console.log(user);
-
     await prisma.registracion.create({
       data: {
-        ...data,
+        residence: formData.get("residence") as string,
+        city: formData.get("city") as string,
+        adress: formData.get("adress") as string,
+        apartamentNumber: formData.get("apartamentNumber") as string,
+        validation: formData.get("validation") as string,
+        finished: formData.get("finished")
+          ? new Date(formData.get("finished") as string)
+          : new Date(),
+        imageUrl: formData.get("imageUrl") as string,
         userId: user.id || "",
       },
     });

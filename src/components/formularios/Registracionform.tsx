@@ -76,7 +76,7 @@ export default function Registracion() {
             </label>
             <input
               type="date"
-              name="finish"
+              name="finished"
               className="w-full p-1 rounded border border-gray-300 text-sm"
             />
           </div>

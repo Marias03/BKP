@@ -76,7 +76,7 @@ export default function Visa() {
             </label>
             <input
               type="date"
-              name="Until"
+              name="until"
               className="w-full p-1.5 rounded border border-gray-300 text-sm"
             />
           </div>

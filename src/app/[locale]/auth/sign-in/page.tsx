@@ -1,5 +1,5 @@
 import { currentUser } from "@/lib/dal/user";
-import SignInSection from "@/sections/SignInSection";
+import SignInSection from "@/app/[locale]/sections/SignInSection";
 import { redirect } from "next/navigation";
 
 type SignInProps = {

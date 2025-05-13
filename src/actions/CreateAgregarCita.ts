@@ -3,7 +3,6 @@
 import { revalidatePath } from "next/cache";
 import prisma from "../lib/prisma/client";
 import { currentUser } from "../lib/dal/user";
-import { serialize } from "v8";
 
 export default async function createAgregarcita(
   _initialData: any,
@@ -32,12 +31,12 @@ export default async function createAgregarcita(
       throw new Error("Fecha es requerida ");
     }
 
-    await prisma.cita.create({
-      data: {
-        ...data,
-        clienteId: user.id || "",
-      },
-    });
+    // await prisma.cita.create({
+    //   data: {
+    //     ...data,
+    //     clienteId: user.id || "",
+    //   },
+    // });
 
     revalidatePath("/datos");
     return { success: true, message: "Datos guardados correctamente" };

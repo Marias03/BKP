@@ -1,62 +1,107 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export const Navbar = () => {
   const path = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  if (path?.startsWith("/auth/")) return null;
+  const currentLocale = path?.split("/")[1] || "es";
+
+  const localizePath = (path: string) => `/${currentLocale}${path}`;
+
+  if (path?.startsWith(`/${currentLocale}/auth`)) return null;
 
   return (
-    <nav className="w-full bg-blue-50 py-4 font-sans">
-      {" "}
-      {/* Fondo azul claro y fuente elegante */}
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex justify-center space-x-10">
-          <Link href="/documents">
-            <span
-              className={`
-              text-lg px-4 py-2 font-light tracking-wide transition-colors
-              ${
-                path === "/documents"
-                  ? "text-blue-900 font-medium border-b border-blue-900"
-                  : "text-blue-600 hover:text-blue-800"
-              }
-            `}
-            >
-              Mis documentos
-            </span>
+    <nav className="bg-blue-600 w-full py-4 shadow-md">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
+        <div className="flex-shrink-0 h-[80px] flex items-center">
+          {" "}
+          <Link href={localizePath("/")} className="h-full flex items-center">
+            <img
+              src="/kazan.png"
+              className="h-full max-h-[80px] w-auto"
+              style={{ minWidth: "100px" }}
+              alt="Logo"
+            />
           </Link>
+        </div>
 
-          <Link href="/necesarios">
-            <span
-              className={`
-              text-lg px-4 py-2 font-light tracking-wide transition-colors
-              ${
-                path === "necesarios"
-                  ? "text-blue-900 font-medium border-b border-blue-900"
-                  : "text-blue-600 hover:text-blue-800"
-              }
-            `}
-            >
-              Documentos necesarios
-            </span>
-          </Link>
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          type="button"
+          className="md:hidden text-white focus:outline-none"
+          aria-expanded={isMenuOpen}
+        >
+          <span className="sr-only">Menu</span>
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            {isMenuOpen ? (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            ) : (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            )}
+          </svg>
+        </button>
 
-          <Link href="/citas">
-            <span
-              className={`
-              text-lg px-4 py-2 font-light tracking-wide transition-colors
-              ${
-                path === "/citas"
-                  ? "text-blue-900 font-medium border-b border-blue-900"
-                  : "text-blue-600 hover:text-blue-800"
-              }
-            `}
-            >
-              Agendación de citas
-            </span>
-          </Link>
+        <div
+          className={`${
+            isMenuOpen ? "block" : "hidden"
+          } w-full md:block md:w-auto`}
+        >
+          <ul className="flex flex-col md:flex-row md:space-x-8 mt-4 md:mt-0">
+            <li>
+              <Link
+                href={localizePath("/documents")}
+                className={`block py-2 px-3 text-white ${
+                  path?.endsWith("/documents")
+                    ? "font-bold md:border-b-2 md:border-white"
+                    : "hover:bg-blue-700 md:hover:bg-transparent"
+                }`}
+              >
+                Mis documentos
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={localizePath("/necesarios")}
+                className={`block py-2 px-3 text-white ${
+                  path?.endsWith("/necesarios")
+                    ? "font-bold md:border-b-2 md:border-white"
+                    : "hover:bg-blue-700 md:hover:bg-transparent"
+                }`}
+              >
+                Documentos necesarios
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={localizePath("/citas")}
+                className={`block py-2 px-3 text-white ${
+                  path?.endsWith("/citas")
+                    ? "font-bold md:border-b-2 md:border-white"
+                    : "hover:bg-blue-700 md:hover:bg-transparent"
+                }`}
+              >
+                Agendacion de citas
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>

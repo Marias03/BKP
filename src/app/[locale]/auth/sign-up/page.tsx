@@ -1,5 +1,5 @@
 import { currentUser } from "@/lib/dal/user";
-import SignUpSection from "@/sections/SignUpSection";
+import SignUpSection from "@/app/[locale]/sections/SignUpSection";
 import { redirect } from "next/navigation";
 
 type SignUpProps = {

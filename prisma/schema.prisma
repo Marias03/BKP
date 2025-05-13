@@ -176,12 +176,17 @@ model Visa {
 model Cita {
   id          Int      @id @default(autoincrement())
   fecha       DateTime
+  title       String?
   descripcion String?
+  hora        DateTime
   clienteId   String
+  inicio      DateTime
+  fin         DateTime
+  
   direccion   String 
   cliente     User   @relation(fields: [clienteId], references: [id])
   creadoEn    DateTime @default(now())
-  actualizadoEn DateTime @updatedAt
+  actualizadoEn DateTime? @updatedAt
 
   @@index([fecha])
   @@map("Cita")

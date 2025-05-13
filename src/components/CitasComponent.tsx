@@ -8,8 +8,7 @@ import { useState, useEffect } from "react";
 export default function CitasComponent() {
   const [citas, setCitas] = useState<any[]>([]);
   const [vista, setVista] = useState("lista");
-  const [direccion, setDireccion] = useState("");
-  // Cargar citas del localStorage
+
   useEffect(() => {
     const citasGuardadas = localStorage.getItem("citas");
     if (citasGuardadas) {
@@ -17,7 +16,6 @@ export default function CitasComponent() {
     }
   }, []);
 
-  // Guardar citas cuando cambian
   useEffect(() => {
     localStorage.setItem("citas", JSON.stringify(citas));
   }, [citas]);
@@ -75,20 +73,6 @@ export default function CitasComponent() {
           <h2 className="text-xl font-semibold mb-4">Agendar Nueva Cita</h2>
           <h2 className="text-xl font-semibold mb-4"></h2>
 
-          <div className="mb-4">
-            <label className="block mb-2 font-semibold">Dirección</label>
-            <select
-              value={direccion}
-              onChange={(e) => setDireccion(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded"
-            >
-              <option value="">Seleccione una dirección</option>
-              <option value="1">Gvardeiskaya 9</option>
-              <option value="2">Gvardeiskaya 32</option>
-              <option value="3">Universiade Village</option>
-              <option value="4">Gabriloba 77</option>
-            </select>
-          </div>
           <FormCita onSubmit={agregarCita} />
         </div>
       </div>

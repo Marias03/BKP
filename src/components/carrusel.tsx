@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 
 export default function Carrusel() {
@@ -25,17 +24,18 @@ export default function Carrusel() {
   };
 
   return (
-    <div className="relative w-full h-[90dvh] max-w-screen-2xl mx-auto">
-      {/* Contenedor con tamaño fijo (16:9) y centrado */}
-      <div className="w-full h-full flex items-center justify-center overflow-hidden bg-gray-100">
+    <div className="relative w-full h-[calc(100vh-64px+0.40cm)] -mt-[calc(64px+0.40cm)]">
+      {" "}
+      {/* Ajuste milimétrico */}
+      {/* Contenedor del carrusel */}
+      <div className="w-full h-full overflow-hidden">
         <img
           src={imagenes[indiceActual]}
           alt={`Imagen ${indiceActual + 1}`}
           className="w-full h-full object-cover"
         />
       </div>
-
-      {/* Botones de navegación */}
+      {/* Botones de navegación (sin cambios) */}
       <button
         onClick={anterior}
         className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition"
@@ -48,8 +48,7 @@ export default function Carrusel() {
       >
         ▶
       </button>
-
-      {/* Indicadores de posición (puntos) */}
+      {/* Indicadores de posición (sin cambios) */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
         {imagenes.map((_, index) => (
           <button

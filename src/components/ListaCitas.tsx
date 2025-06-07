@@ -29,7 +29,8 @@ function ListaCitas({
                 <div>
                   <h3 className="font-medium">{appointment.title}</h3>
                   <p className="text-sm text-gray-600">
-                    {formatDate(appointment.start)} - {appointment.duration} min
+                    {formatDate(appointment.inicio)} - {appointment.duration}{" "}
+                    min
                   </p>
                   {appointment.description && (
                     <p className="text-sm mt-1">{appointment.description}</p>

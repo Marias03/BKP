@@ -1,25 +1,64 @@
 "use client";
+"use client";
 
 import AuthFormWrapper from "@/components/auth/AuthFormWrapper";
-import Image from "next/image";
 import { Card, CardBody, CardHeader } from "@heroui/card";
-import StyledButton from "@/components/styled/StyledButton";
-import { signIn } from "next-auth/react";
 import SigninForm from "@/components/forms/SignInForm";
+import Navbar from "@/components/ui/Navbarsingin";
 
-export default function SignInSection({ sessionCallback }: { sessionCallback: string; }) {
+export default function SignInSection({
+  sessionCallback,
+}: {
+  sessionCallback: string;
+}) {
   return (
-    <AuthFormWrapper>
-      <Card className="w-[550px] shadow p-5">
-        <CardHeader className="flex flex-col justify-center items-center mt-6 mb-4">
-          <h1 className="text-3xl font-semibold">Welcome</h1>
-          <p className="text-sm font-normal">Sign in</p>
-        </CardHeader>
-        <CardBody className="flex justify-center">
-          <SigninForm label="Login" />
-        </CardBody>
-        
-      </Card>
-    </AuthFormWrapper>
+    <div className="min-h-screen relative">
+      {/* Contenedor del fondo con múltiples fallbacks */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: "url('/fondosing.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      ></div>
+
+      {/* Contenido principal */}
+      <div className="relative z-10">
+        <Navbar />
+
+        <AuthFormWrapper>
+          <Card className="w-[550px] shadow-lg p-6 bg-white/90 backdrop-blur-sm">
+            <CardHeader className="flex flex-col justify-center items-center mt-6 mb-4">
+              <h1 className="text-3xl font-semibold text-gray-800">Welcome</h1>
+              <p className="text-sm font-normal text-gray-600">
+                Sign in to your account
+              </p>
+            </CardHeader>
+
+            <CardBody className="flex justify-center">
+              <SigninForm label="Login" />
+            </CardBody>
+          </Card>
+        </AuthFormWrapper>
+      </div>
+
+      {/* Verificación en consola */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            const img = new Image();
+            img.src = '/fondosing.jpg';
+            img.onload = function() {
+              console.log('Background image loaded successfully');
+            };
+            img.onerror = function() {
+              console.error('Error loading background image - check file path and name');
+              document.querySelector('.bg-error-fallback').style.display = 'flex';
+            };
+          `,
+        }}
+      />
+    </div>
   );
-};
+}

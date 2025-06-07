@@ -9,29 +9,32 @@ const authOptions = {
   providers: [
     CredentialsProvider({
       credentials: {
-        email: { },
-        password: { },
+        email: {},
+        password: {},
       },
       async authorize(credentials, _req) {
         const user = await prisma.user.findUnique({
           where: {
             email: credentials?.email,
-          }
+          },
         });
 
-        if(!user) return null;
+        if (!user) return null;
 
-        const isCorrectPassword = await compare(credentials?.password || "", user.password);
+        const isCorrectPassword = await compare(
+          credentials?.password || "",
+          user.password
+        );
 
-        if(isCorrectPassword) {
+        if (isCorrectPassword) {
           return {
             id: user.id,
             email: user.email,
-          }
+          };
         }
 
         return null;
-      }
+      },
     }),
   ],
   adapter: PrismaAdapter(prisma as unknown as PrismaClient),
@@ -41,7 +44,7 @@ const authOptions = {
   },
   pages: {
     signIn: "/auth/sign-in",
-  }
+  },
 } satisfies AuthOptions;
 
 export default authOptions;

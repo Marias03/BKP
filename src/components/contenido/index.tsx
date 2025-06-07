@@ -4,26 +4,21 @@ import { UserType } from "@/lib/dal/user";
 import { Button } from "@heroui/button";
 import { signOut } from "next-auth/react";
 
-export default function Contenido({user} : { user: UserType | null}) {
-    console.log(user);
+export default function Contenido({ user }: { user: UserType | null }) {
+  return (
+    <div>
+      <form>
+        <input type="date" />
+      </form>
 
-    return (
-
-        <>
-            <form>
-
-                <input type="date" />
-            </form>
-
-           <Button
+      <Button
         color="danger"
         variant="shadow"
-        onPress={() => signOut()}
+        onPress={() => signOut({ callbackUrl: "/auth/signin" })}
         className="font-semibold"
       >
-        Logout
+        Cerrar sesión
       </Button>
-        </>
-     
-    )
-};
+    </div>
+  );
+}

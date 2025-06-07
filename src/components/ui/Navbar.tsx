@@ -2,11 +2,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { signOut, useSession } from "next-auth/react";
+import { Button } from "@heroui/button";
 
 export const Navbar = () => {
+  const { data } = useSession();
+
   const path = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const currentLocale = path?.split("/")[1] || "es";
 
   const localizePath = (path: string) => `/${currentLocale}${path}`;
@@ -17,7 +20,6 @@ export const Navbar = () => {
     <nav className="bg-blue-600 w-full py-4 shadow-md">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
         <div className="flex-shrink-0 h-[80px] flex items-center">
-          {" "}
           <Link href={localizePath("/")} className="h-full flex items-center">
             <img
               src="/kazan.png"
@@ -28,36 +30,39 @@ export const Navbar = () => {
           </Link>
         </div>
 
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          type="button"
-          className="md:hidden text-white focus:outline-none"
-          aria-expanded={isMenuOpen}
-        >
-          <span className="sr-only">Menu</span>
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <div className="flex items-center gap-4">
+          {/* Botón para móvil */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            type="button"
+            className="md:hidden text-white focus:outline-none"
+            aria-expanded={isMenuOpen}
           >
-            {isMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
+            <span className="sr-only">Menu</span>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
 
         <div
           className={`${
@@ -98,9 +103,52 @@ export const Navbar = () => {
                     : "hover:bg-blue-700 md:hover:bg-transparent"
                 }`}
               >
-                Agendacion de citas
+                Agendación de citas
               </Link>
             </li>
+
+            <Link
+              href={localizePath("/codigoqr")}
+              className={`block py-2 px-3 text-white ${
+                path?.endsWith("/codigoqr")
+                  ? "font-bold md:border-b-2 md:border-white"
+                  : "hover:bg-blue-700 md:hover:bg-transparent"
+              }`}
+            >
+              tu autentication
+            </Link>
+
+            {data && (
+              <div className="hidden md:block">
+                <Button
+                  color="danger"
+                  variant="shadow"
+                  onPress={() =>
+                    signOut({ callbackUrl: `/${currentLocale}/auth/sign-in` })
+                  }
+                  size="sm"
+                  className="font-semibold"
+                >
+                  Cerrar sesión
+                </Button>
+              </div>
+            )}
+
+            {/* Botón de logout para móvil (solo en menú desplegable) */}
+            {data && (
+              <li className="md:hidden mt-2">
+                <Button
+                  color="danger"
+                  variant="shadow"
+                  onPress={() =>
+                    signOut({ callbackUrl: `/${currentLocale}/auth/sign-in` })
+                  }
+                  className="w-full"
+                >
+                  Cerrar sesión
+                </Button>
+              </li>
+            )}
           </ul>
         </div>
       </div>

@@ -23,7 +23,8 @@ const SigninForm = ({ label }: SigninFormProps) => {
     const response = await signIn("credentials", {
       email: form.get("email"),
       password: form.get("password"),
-      redirect: false,
+      redirect: true,
+      callbackUrl: "/en",
     });
 
     console.log(response);
@@ -42,14 +43,18 @@ const SigninForm = ({ label }: SigninFormProps) => {
         <StyledInput placeholder="Password" type="password" name="password" />
         <Spacer y={2.5} />
 
-        <StyledButton fullWidth color="skyblue" type="submit">
+        <StyledButton
+          className="bg-blue-500 text-white"
+          fullWidth
+          type="submit"
+        >
           {label}
         </StyledButton>
         <div className="flex items-center justify-center gap-2 w-full">
-          <span className="text-gray-500">or</span>
+          <span className="text-gray-700">or</span>
 
-          <Link href="/auth/sign-up">
-            <button className="text-blue-500 hover:underline">Register</button>
+          <Link href="/en/auth/sign-up">
+            <button className="text-blue-800 hover:underline">Register</button>
           </Link>
         </div>
       </form>

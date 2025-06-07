@@ -8,11 +8,11 @@ type Environment = "production" | "development" | "other";
 
 const authMiddleware = withAuth({
   pages: {
-    signIn: "/auth/sign-in",
+    signIn: "/en/auth/sign-in",
   },
 });
 
-const authPathsScopes = ["/profile"];
+const authPathsScopes = ["/profile", "citas", "documents", "necesarios"];
 
 async function middleware(request: NextRequestWithAuth, event: NextFetchEvent) {
   const currentEnv = process.env.NODE_ENV as Environment;
@@ -32,7 +32,11 @@ async function middleware(request: NextRequestWithAuth, event: NextFetchEvent) {
 
   const path = request.nextUrl.pathname;
 
-  if (authPathsScopes.some((authPath) => path.startsWith(authPath))) {
+  if (
+    authPathsScopes.some(
+      (authPath) => path.startsWith(authPath) || path.endsWith(authPath)
+    )
+  ) {
     return authMiddleware(request, event);
   }
 

@@ -2,6 +2,7 @@
 
 import { currentUser } from "@/lib/dal/user";
 import prisma from "@/lib/prisma/client";
+import { revalidatePath } from "next/cache";
 
 export default async function createCita(data: any) {
   const currentUserId = await currentUser();
@@ -16,4 +17,6 @@ export default async function createCita(data: any) {
       },
     },
   });
+
+  revalidatePath("/");
 }

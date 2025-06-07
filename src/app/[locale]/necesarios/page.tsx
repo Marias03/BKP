@@ -1,55 +1,66 @@
 "use client";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function Necesarios() {
   const [activeTab, setActiveTab] = useState(0);
+  const t = useTranslations("Necesarios");
 
   const tabs = [
     {
-      title: "Requisitos para realizar la Visa",
+      title: t("visa.title"),
       content: [
-        "Pasaporte original + 2 copias de la página principal",
-        "2 copias de la última visa realizada",
-        "1 copia de todas las páginas selladas o con otras visas",
-        "Registración original + 2 copias",
-        "Carta de migración original + 2 copias",
-        "Certificado estudiantil emitido por el decanato",
-        "Recibo de pago",
-        "2 fotos a color, 3x4",
+        t("visa.items.0"),
+        t("visa.items.1"),
+        t("visa.items.2"),
+        t("visa.items.3"),
+        t("visa.items.4"),
+        t("visa.items.5"),
+        t("visa.items.6"),
+        t("visa.items.7"),
       ],
     },
     {
-      title: "Requisitos para realizar La Registración",
+      title: t("registration.title"),
       content: [
-        "Pasaporte original",
-        "Carta de migración original",
-        "Certificado de estudio",
-        "Última registración realizada",
+        t("registration.items.0"),
+        t("registration.items.1"),
+        t("registration.items.2"),
+        t("registration.items.3"),
       ],
     },
     {
-      title: "Requisitos para la realizacion del Certificado Médico Estatal",
+      title: t("medical.title"),
       content: [
-        "Pasaporte original",
-        "Registración",
-        "Carta de migración",
-        "Traducción notariada de la primera página del pasaporte",
+        t("medical.items.0"),
+        t("medical.items.1"),
+        t("medical.items.2"),
+        t("medical.items.3"),
         <span key="cost">
-          Costo de exámenes:{" "}
-          <span className="font-medium text-blue-700">7200 RUB</span>
+          {t("medical.items.4.label")}{" "}
+          <span className="font-medium text-blue-700">
+            {t("medical.items.4.value")}
+          </span>
         </span>,
       ],
     },
     {
-      title: "Requisitos para la realizacion de Las Huellas Dactilares",
+      title: t("fingerprints.title"),
       content: [
-        "Pasaporte original",
-        "Traducción notariada de la primera página del pasaporte",
-        "Registración",
-        "Carta de migración",
-        "Resultados de exámenes médicos estatales",
+        t("fingerprints.items.0"),
+        t("fingerprints.items.1"),
+        t("fingerprints.items.2"),
+        t("fingerprints.items.3"),
+        t("fingerprints.items.4"),
       ],
     },
+  ];
+
+  const tabLabels = [
+    t("labels.visa"),
+    t("labels.registration"),
+    t("labels.medical"),
+    t("labels.fingerprints"),
   ];
 
   return (
@@ -58,20 +69,15 @@ export default function Necesarios() {
       <div className="w-full lg:w-2/5 xl:w-5/12 bg-blue-100 border-r border-blue-200 p-8 flex flex-col items-center">
         <div className="text-center mb-8 w-full max-w-xs">
           <h1 className="text-3xl font-light text-blue-800">
-            Elige tu necesidad
+            {t("header.title")}
           </h1>
           <p className="text-xl text-blue-600 mt-2 italic">
-            ¿Qué trámite necesitas?
+            {t("header.subtitle")}
           </p>
         </div>
 
         <div className="flex flex-col space-y-4 w-full max-w-xs">
-          {[
-            "Visa",
-            "Registración",
-            "Certificado Médico",
-            "Huellas Dactilares",
-          ].map((tab, index) => (
+          {tabLabels.map((tab, index) => (
             <button
               key={index}
               onClick={() => setActiveTab(index)}

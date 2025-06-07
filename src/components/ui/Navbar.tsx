@@ -1,11 +1,15 @@
 "use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { Button } from "@heroui/button";
+import LanguageDropdown from "../languageDropdown";
+import { useTranslations } from "next-intl";
 
 export const Navbar = () => {
+  const t = useTranslations("Navbar");
   const { data } = useSession();
 
   const path = usePathname();
@@ -31,14 +35,13 @@ export const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          {/* Botón para móvil */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             type="button"
             className="md:hidden text-white focus:outline-none"
             aria-expanded={isMenuOpen}
           >
-            <span className="sr-only">Menu</span>
+            <span className="sr-only">{t("menu")}</span>
             <svg
               className="w-6 h-6"
               fill="none"
@@ -79,7 +82,7 @@ export const Navbar = () => {
                     : "hover:bg-blue-700 md:hover:bg-transparent"
                 }`}
               >
-                Mis documentos
+                {t("documents")}
               </Link>
             </li>
             <li>
@@ -91,7 +94,7 @@ export const Navbar = () => {
                     : "hover:bg-blue-700 md:hover:bg-transparent"
                 }`}
               >
-                Documentos necesarios
+                {t("requiredDocuments")}
               </Link>
             </li>
             <li>
@@ -103,7 +106,7 @@ export const Navbar = () => {
                     : "hover:bg-blue-700 md:hover:bg-transparent"
                 }`}
               >
-                Agendación de citas
+                {t("appointments")}
               </Link>
             </li>
 
@@ -115,7 +118,7 @@ export const Navbar = () => {
                   : "hover:bg-blue-700 md:hover:bg-transparent"
               }`}
             >
-              tu autentication
+              {t("qrCode")}
             </Link>
 
             {data && (
@@ -129,12 +132,11 @@ export const Navbar = () => {
                   size="sm"
                   className="font-semibold"
                 >
-                  Cerrar sesión
+                  {t("signOut")}
                 </Button>
               </div>
             )}
 
-            {/* Botón de logout para móvil (solo en menú desplegable) */}
             {data && (
               <li className="md:hidden mt-2">
                 <Button
@@ -145,10 +147,12 @@ export const Navbar = () => {
                   }
                   className="w-full"
                 >
-                  Cerrar sesión
+                  {t("signOut")}
                 </Button>
               </li>
             )}
+
+            <LanguageDropdown />
           </ul>
         </div>
       </div>

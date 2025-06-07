@@ -1,21 +1,20 @@
 "use client";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import ListaCitas from "./ListaCitas";
 import Calendario from "./calendario";
 import FormCita from "./formularios/FormCita";
 
-// Este componente hijo sí necesita 'use client' para manejar el estado
 export default function ClientComponent({
   citasIniciales,
 }: {
   citasIniciales: any[];
 }) {
+  const t = useTranslations("Citas");
   const [citas, setCitas] = useState<any[]>(citasIniciales);
   const [vista, setVista] = useState("lista");
 
   const agregarCita = async (nuevaCita: any) => {
-    // Aquí podrías hacer una llamada a una API route para crear la cita en Prisma
-    // y luego actualizar el estado local con la respuesta
     const response = await fetch("/api/citas", {
       method: "POST",
       headers: {
@@ -29,7 +28,6 @@ export default function ClientComponent({
   };
 
   const eliminarCita = async (id: any) => {
-    // Llamada a API route para eliminar
     await fetch(`/api/citas/${id}`, {
       method: "DELETE",
     });
@@ -38,9 +36,7 @@ export default function ClientComponent({
 
   return (
     <div className="container mx-auto p-4 max-w-6xl">
-      <h1 className="text-3xl font-bold text-center mb-8">
-        Agendacion de citas
-      </h1>
+      <h1 className="text-3xl font-bold text-center mb-8">{t("title")}</h1>
 
       <div className="flex gap-4 mb-6 justify-center">
         <button
@@ -49,7 +45,7 @@ export default function ClientComponent({
             vista === "lista" ? "bg-blue-600 text-white" : "bg-gray-200"
           }`}
         >
-          Ver Lista
+          {t("viewList")}
         </button>
         <button
           onClick={() => setVista("calendario")}
@@ -57,7 +53,7 @@ export default function ClientComponent({
             vista === "calendario" ? "bg-blue-600 text-white" : "bg-gray-200"
           }`}
         >
-          Ver Calendario
+          {t("viewCalendar")}
         </button>
       </div>
 
@@ -70,8 +66,8 @@ export default function ClientComponent({
           )}
         </div>
 
-        <div className="bg-blue 500  p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold mb-4">Agendar Nueva Cita</h2>
+        <div className="bg-blue-500 p-6 rounded-lg shadow-md">
+          <h2 className="text-xl font-semibold mb-4">{t("newAppointment")}</h2>
           <FormCita onSubmit={agregarCita} />
         </div>
       </div>

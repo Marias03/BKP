@@ -1,15 +1,15 @@
 import createCita from "@/actions/createCita";
-import prisma from "@/lib/prisma/client";
 import { CitaType, ErrorType } from "@/types/model";
 import { ChangeEvent, useState, FormEvent } from "react";
+import { useTranslations } from "next-intl";
 
 export default function FormCita({
   onSubmit,
 }: {
   onSubmit: (nuevaCita: any) => void;
 }) {
+  const t = useTranslations("FormCita");
   const [direccion, setDireccion] = useState("");
-
   const [formData, setFormData] = useState<CitaType>({
     title: "",
     fecha: "",
@@ -30,29 +30,26 @@ export default function FormCita({
   const validarFormulario = (): boolean => {
     const nuevosErrores: ErrorType = {};
 
-    // Validación de título
     if (!formData.title.trim()) {
-      nuevosErrores.titulo = "El título es obligatorio.";
+      nuevosErrores.titulo = t("errors.title.required");
     } else if (formData.title.trim().length < 3) {
-      nuevosErrores.titulo = "El título debe tener al menos 3 caracteres.";
+      nuevosErrores.titulo = t("errors.title.min");
     }
 
-    // Validación de fecha
     if (!formData.fecha) {
-      nuevosErrores.fecha = "La fecha es obligatoria.";
+      nuevosErrores.fecha = t("errors.date.required");
     } else {
       const fechaSeleccionada = new Date(formData.fecha);
       const hoy = new Date();
       hoy.setHours(0, 0, 0, 0);
 
       if (fechaSeleccionada < hoy) {
-        nuevosErrores.fecha = "No puedes agendar en el pasado.";
+        nuevosErrores.fecha = t("errors.date.past");
       }
     }
 
-    // Validación de hora
     if (!formData.hora) {
-      nuevosErrores.hora = "La hora es obligatoria.";
+      nuevosErrores.hora = t("errors.time.required");
     }
 
     setErrores(nuevosErrores);
@@ -66,11 +63,11 @@ export default function FormCita({
     const horaDate = new Date();
     horaDate.setHours(parseInt(formData.hora.split(":")[0]));
     horaDate.setMinutes(parseInt(formData.hora.split(":")[1]));
-    // Crear objeto de cita con formato correcto
+
     const cita = {
       title: formData.title,
-      fecha: new Date(formData.fecha), // Formato YYYY-MM-DD
-      direccion: direccion,
+      fecha: new Date(formData.fecha),
+      direccion,
       descripcion: formData.descripcion.trim(),
       hora: horaDate,
       inicio: new Date(`${formData.fecha}T${formData.hora}:00`).toISOString(),
@@ -80,10 +77,9 @@ export default function FormCita({
       ).toISOString(),
     };
 
-    console.log(cita);
-
     await createCita(cita);
     onSubmit(cita);
+
     setFormData({
       title: "",
       fecha: "",
@@ -91,32 +87,36 @@ export default function FormCita({
       descripcion: "",
       direccion: "",
     });
+    setDireccion("");
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="mb-4">
-        <label className="block mb-2 font-semibold">Dirección</label>
+        <label className="block mb-2 font-semibold">
+          {t("labels.address")}
+        </label>
         <select
           value={direccion}
           onChange={(e) => setDireccion(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded"
         >
-          <option value="">Seleccione una dirección</option>
+          <option value="">{t("placeholders.selectAddress")}</option>
           <option value="1">Gvardeiskaya 9</option>
           <option value="2">Gvardeiskaya 32</option>
           <option value="3">Universiade Village</option>
           <option value="4">Gabriloba 77</option>
         </select>
       </div>
+
       <div>
-        <label className="block mb-1 font-semibold">Trámite*</label>
+        <label className="block mb-1 font-semibold">{t("labels.title")}*</label>
         <input
           type="text"
           name="title"
           value={formData.title}
           onChange={handleChange}
-          placeholder="Ej: Visa, Registración"
+          placeholder={t("placeholders.title")}
           className={`w-full p-2 border rounded-md ${
             errores.titulo ? "border-red-500" : "border-gray-300"
           }`}
@@ -126,10 +126,11 @@ export default function FormCita({
         )}
       </div>
 
-      {/* Fecha y Hora */}
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block mb-1 font-semibold">Fecha*</label>
+          <label className="block mb-1 font-semibold">
+            {t("labels.date")}*
+          </label>
           <input
             type="date"
             name="fecha"
@@ -146,7 +147,9 @@ export default function FormCita({
         </div>
 
         <div>
-          <label className="block mb-1 font-semibold">Hora*</label>
+          <label className="block mb-1 font-semibold">
+            {t("labels.time")}*
+          </label>
           <input
             type="time"
             name="hora"
@@ -162,25 +165,25 @@ export default function FormCita({
         </div>
       </div>
 
-      {/* Descripción */}
       <div>
-        <label className="block mb-1 font-semibold">Descripción</label>
+        <label className="block mb-1 font-semibold">
+          {t("labels.description")}
+        </label>
         <textarea
           name="descripcion"
           value={formData.descripcion}
           onChange={handleChange}
           rows={3}
-          placeholder="Detalles adicionales..."
+          placeholder={t("placeholders.description")}
           className="w-full p-2 border border-gray-300 rounded-md"
         />
       </div>
 
-      {/* Botón */}
       <button
         type="submit"
         className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
       >
-        Agendar Cita
+        {t("buttons.submit")}
       </button>
     </form>
   );

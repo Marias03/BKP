@@ -2,20 +2,23 @@
 
 import createCmedico from "@/actions/createCmedico";
 import { useActionState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function Cmedico() {
   const [state, formAction] = useActionState(createCmedico, null);
+  const t = useTranslations("Cmedico");
+
   return (
     <div className="flex justify-center pt-4">
       <div className="w-full max-w-md mx-4 bg-blue-400 rounded-lg p-4">
         <h2 className="text-lg font-bold text-white text-center mb-3 border-b border-blue-300 pb-2">
-          Actualiza tu certificado medico
+          {t("title")}
         </h2>
 
         <form action={formAction} className="space-y-3">
           <div className="space-y-1">
             <label className="block text-white text-sm font-medium">
-              Serie del documento:
+              {t("serial")}
             </label>
             <input
               type="text"
@@ -26,7 +29,7 @@ export default function Cmedico() {
 
           <div className="space-y-1">
             <label className="block text-white text-sm font-medium">
-              Número de documento:
+              {t("number")}
             </label>
             <input
               type="text"
@@ -37,7 +40,7 @@ export default function Cmedico() {
 
           <div className="space-y-1">
             <label className="block text-white text-sm font-medium">
-              Fecha de emisión:
+              {t("issueDate")}
             </label>
             <input
               type="date"
@@ -48,7 +51,7 @@ export default function Cmedico() {
 
           <div className="space-y-1">
             <label className="block text-white text-sm font-medium">
-              URL del documento:
+              {t("url")}
             </label>
             <input
               type="text"
@@ -61,7 +64,7 @@ export default function Cmedico() {
             type="submit"
             className="w-full bg-blue-700 hover:bg-blue-600 text-white py-1.5 px-4 rounded text-sm font-medium mt-2 transition-colors"
           >
-            Enviar
+            {t("submit")}
           </button>
         </form>
 
@@ -70,7 +73,7 @@ export default function Cmedico() {
         )}
         {state?.success && (
           <p className="mt-2 text-green-500 text-center text-sm">
-            ¡Documento registrado exitosamente!
+            {t("success")}
           </p>
         )}
       </div>

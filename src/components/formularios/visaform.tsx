@@ -2,9 +2,12 @@
 
 import createVisa from "@/actions/createVisa";
 import { useActionState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function Visa() {
   const [state, formAction] = useActionState(createVisa, null);
+  const t = useTranslations("Visa");
+
   return (
     <div className="flex justify-center pt-4">
       <form
@@ -12,12 +15,12 @@ export default function Visa() {
         className="flex flex-col gap-2 w-full max-w-sm bg-blue-400 p-4 rounded-md"
       >
         <h1 className="text-lg font-bold text-white text-center mb-2">
-          Actualiza tu visa
+          {t("title")}
         </h1>
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Nombres:
+            {t("name")}
           </label>
           <input
             type="text"
@@ -28,7 +31,7 @@ export default function Visa() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Apellidos:
+            {t("surname")}
           </label>
           <input
             type="text"
@@ -39,7 +42,7 @@ export default function Visa() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Número de pasaporte:
+            {t("passportNumber")}
           </label>
           <input
             type="text"
@@ -50,7 +53,7 @@ export default function Visa() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Fecha de emisión:
+            {t("emissionDate")}
           </label>
           <input
             type="date"
@@ -62,7 +65,7 @@ export default function Visa() {
         <div className="grid grid-cols-2 gap-2">
           <div className="space-y-1">
             <label className="block text-white text-sm font-medium">
-              Válida desde:
+              {t("entry")}
             </label>
             <input
               type="date"
@@ -72,7 +75,7 @@ export default function Visa() {
           </div>
           <div className="space-y-1">
             <label className="block text-white text-sm font-medium">
-              Hasta:
+              {t("until")}
             </label>
             <input
               type="date"
@@ -84,7 +87,7 @@ export default function Visa() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            URL del documento:
+            {t("url")}
           </label>
           <input
             type="text"
@@ -97,7 +100,7 @@ export default function Visa() {
           type="submit"
           className="mt-2 bg-blue-700 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-600 transition-colors"
         >
-          Guardar
+          {t("submit")}
         </button>
 
         {state?.error && (
@@ -105,7 +108,7 @@ export default function Visa() {
         )}
         {state?.success && (
           <p className="text-green-500 text-center text-sm mt-1">
-            ¡Solicitud de visa registrada exitosamente!
+            {t("success")}
           </p>
         )}
       </form>

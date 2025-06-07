@@ -2,22 +2,25 @@
 
 import createPassport from "@/actions/createPassport";
 import { useActionState } from "react";
+import { useTranslations } from "next-intl";
 
-export default function Cmedico() {
+export default function Passport() {
   const [state, formAction] = useActionState(createPassport, null);
+  const t = useTranslations("Passport");
+
   return (
     <div className="flex justify-center pt-4">
       <form
         action={formAction}
-        className="flex flex-col gap-2 w-full max-w-sm bg-blue-400  p-4 rounded-md"
+        className="flex flex-col gap-2 w-full max-w-sm bg-blue-400 p-4 rounded-md"
       >
         <h1 className="text-lg font-bold text-white text-center mb-2">
-          Añade tu Pasaporte
+          {t("title")}
         </h1>
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Serie del documento:
+            {t("serial")}
           </label>
           <input
             type="text"
@@ -28,7 +31,7 @@ export default function Cmedico() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Número de documento:
+            {t("number")}
           </label>
           <input
             type="text"
@@ -39,7 +42,7 @@ export default function Cmedico() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Emitido por:
+            {t("issuedBy")}
           </label>
           <input
             type="text"
@@ -50,7 +53,7 @@ export default function Cmedico() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Fecha de emisión:
+            {t("issueDate")}
           </label>
           <input
             type="date"
@@ -61,7 +64,7 @@ export default function Cmedico() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            URL del documento:
+            {t("url")}
           </label>
           <input
             type="text"
@@ -74,7 +77,7 @@ export default function Cmedico() {
           type="submit"
           className="mt-2 bg-blue-700 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-600 transition-colors"
         >
-          Guardar
+          {t("submit")}
         </button>
 
         {state?.error && (
@@ -82,7 +85,7 @@ export default function Cmedico() {
         )}
         {state?.success && (
           <p className="text-green-500 text-center text-sm mt-1">
-            ¡Pasaporte guardado exitosamente!
+            {t("success")}
           </p>
         )}
       </form>

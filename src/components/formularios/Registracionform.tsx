@@ -2,9 +2,12 @@
 
 import createRegistration from "@/actions/createRegistration";
 import { useActionState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function Registracion() {
   const [state, formAction] = useActionState(createRegistration, null);
+  const t = useTranslations("Registracion");
+
   return (
     <div className="flex justify-center pt-4">
       <form
@@ -12,12 +15,12 @@ export default function Registracion() {
         className="flex flex-col gap-2 w-full max-w-sm bg-blue-400 p-4 rounded-md"
       >
         <h1 className="text-lg font-bold text-white text-center mb-2">
-          Añade tu registracion
+          {t("title")}
         </h1>
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Residencia actual:
+            {t("residence")}
           </label>
           <input
             type="text"
@@ -28,7 +31,7 @@ export default function Registracion() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Ciudad:
+            {t("city")}
           </label>
           <input
             type="text"
@@ -39,7 +42,7 @@ export default function Registracion() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Dirección:
+            {t("address")}
           </label>
           <input
             type="text"
@@ -50,7 +53,7 @@ export default function Registracion() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Número de apartamento/habitación:
+            {t("apartmentNumber")}
           </label>
           <input
             type="text"
@@ -62,7 +65,7 @@ export default function Registracion() {
         <div className="grid grid-cols-2 gap-2">
           <div className="space-y-1">
             <label className="block text-white text-sm font-medium">
-              Validez desde:
+              {t("validFrom")}
             </label>
             <input
               type="date"
@@ -72,7 +75,7 @@ export default function Registracion() {
           </div>
           <div className="space-y-1">
             <label className="block text-white text-sm font-medium">
-              Hasta:
+              {t("validUntil")}
             </label>
             <input
               type="date"
@@ -83,7 +86,9 @@ export default function Registracion() {
         </div>
 
         <div className="space-y-1">
-          <label className="block text-white text-sm font-medium">URL:</label>
+          <label className="block text-white text-sm font-medium">
+            {t("url")}
+          </label>
           <input
             type="text"
             name="imageUrl"
@@ -95,7 +100,7 @@ export default function Registracion() {
           type="submit"
           className="mt-2 bg-blue-700 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-600 transition-colors"
         >
-          Enviar
+          {t("submit")}
         </button>
 
         {state?.error && (
@@ -103,7 +108,7 @@ export default function Registracion() {
         )}
         {state?.success && (
           <p className="text-green-500 text-center text-sm mt-1">
-            ¡Registro guardado!
+            {t("success")}
           </p>
         )}
       </form>

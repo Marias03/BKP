@@ -2,24 +2,25 @@
 
 import createUserInfo from "@/actions/createUserInfo";
 import { useActionState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function Datos() {
   const [state, formAction] = useActionState(createUserInfo, null);
+  const t = useTranslations("Datos");
+
   return (
     <div className="flex justify-center pt-4">
-      {" "}
-      {/* Removido min-h-screen y ajustado padding-top */}
       <form
         action={formAction}
         className="flex flex-col gap-2 w-full max-w-sm bg-blue-400 p-4 rounded-md mt-2"
       >
         <h1 className="text-lg font-bold text-white text-center mb-2">
-          Escribe tus datos personales
+          {t("title")}
         </h1>
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Nombre:
+            {t("name")}
           </label>
           <input
             type="text"
@@ -30,7 +31,7 @@ export default function Datos() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Apellidos:
+            {t("surname")}
           </label>
           <input
             type="text"
@@ -41,7 +42,7 @@ export default function Datos() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Fecha nacimiento:
+            {t("birthdate")}
           </label>
           <input
             type="date"
@@ -52,7 +53,7 @@ export default function Datos() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Pasaporte:
+            {t("passport")}
           </label>
           <input
             type="text"
@@ -63,7 +64,7 @@ export default function Datos() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Teléfono:
+            {t("phone")}
           </label>
           <input
             type="text"
@@ -74,7 +75,7 @@ export default function Datos() {
 
         <div className="space-y-1">
           <label className="block text-white text-sm font-medium">
-            Nacionalidad:
+            {t("nationality")}
           </label>
           <input
             type="text"
@@ -84,7 +85,9 @@ export default function Datos() {
         </div>
 
         <div className="space-y-1">
-          <label className="block text-white text-sm font-medium">Url:</label>
+          <label className="block text-white text-sm font-medium">
+            {t("url")}
+          </label>
           <input
             type="text"
             name="imageUrl"
@@ -96,7 +99,7 @@ export default function Datos() {
           type="submit"
           className="mt-2 bg-blue-800 text-white px-3 py-1.5 rounded text-sm font-medium hover:bg-blue-600 transition-colors"
         >
-          Enviar
+          {t("submit")}
         </button>
 
         {state?.error && (
@@ -104,7 +107,7 @@ export default function Datos() {
         )}
         {state?.success && (
           <p className="text-green-500 text-center text-sm mt-1">
-            ¡Datos guardados!
+            {t("success")}
           </p>
         )}
       </form>

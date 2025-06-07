@@ -13,20 +13,23 @@ const authMiddleware = withAuth({
   },
 });
 
-const authPathsScopes = ["/profile", "citas", "documents", "necesarios"];
+const authPathsScopes = ["profile", "citas", "documents", "necesarios"];
 
 async function middleware(request: NextRequestWithAuth, event: NextFetchEvent) {
   const path = request.nextUrl.pathname;
 
   const intlResponse = intMiddleware(request);
 
-  if (
-    authPathsScopes.some(
-      (authPath) => path.startsWith(authPath) || path.endsWith(authPath)
-    )
-  ) {
-    return authMiddleware(request, event);
-  }
+  // if (
+  //   authPathsScopes.some(
+  //     (authPath) => path.startsWith(authPath) || path.endsWith(authPath)
+  //   )
+  // ) {
+  //   const newUrl = request.nextUrl.clone();
+  //   newUrl.pathname = `/en/auth/sign-in/`;
+
+  //   return NextResponse.redirect(newUrl);
+  // }
 
   return intlResponse;
 }

@@ -1,0 +1,193 @@
+{
+  "LanguageDropdown": {
+    "spanish": "Spanish",
+    "english": "English",
+    "arabic": "Arabic",
+    "chinese": "Chinese",
+    "russian": "Russian"
+  },
+  "Navbar": {
+    "menu": "Menu",
+    "documents": "My Documents",
+    "requiredDocuments": "Required Documents",
+    "appointments": "Appointment Scheduling",
+    "qrCode": "Your Authentication",
+    "signOut": "Sign Out"
+  },
+  "Documents": {
+    "title": "My Documents",
+    "subtitle": "What would you like to update today?",
+    "personalData": "Personal Data",
+    "registration": "Registration",
+    "medicalCertificate": "Medical Certificate",
+    "passport": "Passport",
+    "fingerprints": "Fingerprints",
+    "visa": "Visa"
+  },
+  "Datos": {
+    "title": "Enter your personal data",
+    "name": "Name:",
+    "surname": "Surname:",
+    "birthdate": "Date of Birth:",
+    "passport": "Passport:",
+    "phone": "Phone:",
+    "nationality": "Nationality:",
+    "url": "Url:",
+    "submit": "Submit",
+    "success": "Data saved!"
+  },
+  "Registracion": {
+    "title": "Add your registration",
+    "residence": "Current residence:",
+    "city": "City:",
+    "address": "Address:",
+    "apartmentNumber": "Apartment/room number:",
+    "validFrom": "Valid from:",
+    "validUntil": "Valid until:",
+    "url": "URL:",
+    "submit": "Submit",
+    "success": "Registration saved!"
+  },
+  "Cmedico": {
+    "title": "Update your medical certificate",
+    "serial": "Document series:",
+    "number": "Document number:",
+    "issueDate": "Issue date:",
+    "url": "Document URL:",
+    "submit": "Submit",
+    "success": "Document registered successfully!"
+  },
+  "Passport": {
+    "title": "Add your passport",
+    "serial": "Document series:",
+    "number": "Document number:",
+    "issuedBy": "Issued by:",
+    "issueDate": "Issue date:",
+    "url": "Document URL:",
+    "submit": "Save",
+    "success": "Passport saved successfully!"
+  },
+  "FingerPrints": {
+    "title": "Update your fingerprints",
+    "serial": "Document series:",
+    "number": "Document number:",
+    "issueDate": "Issue date:",
+    "issuedBy": "Issued by:",
+    "url": "Document URL:",
+    "submit": "Save",
+    "success": "Fingerprints registered successfully!"
+  },
+  "Visa": {
+    "title": "Update your visa",
+    "name": "First name(s):",
+    "surname": "Surname:",
+    "passportNumber": "Passport number:",
+    "emissionDate": "Issue date:",
+    "entry": "Valid from:",
+    "until": "Valid until:",
+    "url": "Document URL:",
+    "submit": "Save",
+    "success": "Visa application registered successfully!"
+  },
+  "Necesarios": {
+    "header": {
+      "title": "Choose your need",
+      "subtitle": "Which procedure do you need?"
+    },
+    "labels": {
+      "visa": "Visa",
+      "registration": "Registration",
+      "medical": "Medical Certificate",
+      "fingerprints": "Fingerprints"
+    },
+    "visa": {
+      "title": "Requirements to obtain the Visa",
+      "items": [
+        "Original passport + 2 copies of the main page",
+        "2 copies of the last visa obtained",
+        "1 copy of all stamped pages or with other visas",
+        "Original registration + 2 copies",
+        "Original migration letter + 2 copies",
+        "Student certificate issued by the dean's office",
+        "Payment receipt",
+        "2 color photos, 3x4 cm"
+      ]
+    },
+    "registration": {
+      "title": "Requirements to obtain Registration",
+      "items": [
+        "Original passport",
+        "Original migration letter",
+        "Study certificate",
+        "Last registration obtained"
+      ]
+    },
+    "medical": {
+      "title": "Requirements for obtaining the State Medical Certificate",
+      "items": [
+        "Original passport",
+        "Registration",
+        "Migration letter",
+        "Notarized translation of the first page of the passport",
+        {
+          "label": "Exam cost:",
+          "value": "7200 RUB"
+        }
+      ]
+    },
+    "fingerprints": {
+      "title": "Requirements for obtaining Fingerprints",
+      "items": [
+        "Original passport",
+        "Notarized translation of the first page of the passport",
+        "Registration",
+        "Migration letter",
+        "Results of state medical exams"
+      ]
+    }
+  },
+  "Citas": {
+    "title": "Appointment Scheduling",
+    "viewList": "View List",
+    "viewCalendar": "View Calendar",
+    "newAppointment": "Schedule New Appointment"
+  },
+  "Contenido": {
+    "signOut": "Sign Out"
+  },
+  "FormCita": {
+    "labels": {
+      "address": "Address",
+      "title": "Procedure",
+      "date": "Date",
+      "time": "Time",
+      "description": "Description"
+    },
+    "placeholders": {
+      "selectAddress": "Select an address",
+      "title": "Eg: Visa, Registration",
+      "description": "Additional details..."
+    },
+    "buttons": {
+      "submit": "Schedule Appointment"
+    },
+    "errors": {
+      "title": {
+        "required": "Title is required.",
+        "min": "Title must be at least 3 characters."
+      },
+      "date": {
+        "required": "Date is required.",
+        "past": "You cannot schedule in the past."
+      },
+      "time": {
+        "required": "Time is required."
+      }
+    }
+  },
+  "CodigoQR": {
+    "message": "Your documents have been successfully verified.",
+    "instruction": "This is your identification QR code:",
+    "note": "Scan this QR code to validate your identity at any authorized location."
+  }
+}

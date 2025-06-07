@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import Datos from "@/components/formularios/Datosform";
 import Registracion from "@/components/formularios/Registracionform";
@@ -6,30 +7,27 @@ import Cmedico from "@/components/formularios/Cmedicoform";
 import Passport from "@/components/formularios/passport";
 import FingerPrints from "@/components/formularios/fingerprintsfrom";
 import Visa from "@/components/formularios/visaform";
+import { useTranslations } from "next-intl";
 
 export default function Documents() {
   const [activeTab, setActiveTab] = useState(0);
+  const t = useTranslations("Documents");
 
   const tabs = [
-    { name: "Datos personales", component: <Datos /> },
-    { name: "Registración", component: <Registracion /> },
-    { name: "Certificado médico", component: <Cmedico /> },
-    { name: "Pasaporte", component: <Passport /> },
-    { name: "Huellas dactilares", component: <FingerPrints /> },
-    { name: "Visa", component: <Visa /> },
+    { name: t("personalData"), component: <Datos /> },
+    { name: t("registration"), component: <Registracion /> },
+    { name: t("medicalCertificate"), component: <Cmedico /> },
+    { name: t("passport"), component: <Passport /> },
+    { name: t("fingerprints"), component: <FingerPrints /> },
+    { name: t("visa"), component: <Visa /> },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col lg:flex-row">
-      {/* Navbar Vertical - Muy ancho */}
       <div className="w-full lg:w-2/5 xl:w-5/12 bg-blue-100 border-r border-blue-200 p-8">
         <div className="text-center mb-8">
-          {" "}
-          {/* Contenedor centrado */}
-          <h1 className="text-3xl font-light text-blue-800">Mis documentos</h1>
-          <p className="text-xl text-blue-700  mt-2 italic">
-            ¿Qué te gustaría actualizar hoy?
-          </p>
+          <h1 className="text-3xl font-light text-blue-800">{t("title")}</h1>
+          <p className="text-xl text-blue-700 mt-2 italic">{t("subtitle")}</p>
         </div>
 
         <div className="flex flex-col space-y-4">
@@ -38,11 +36,11 @@ export default function Documents() {
               key={index}
               onClick={() => setActiveTab(index)}
               className={`px-8 py-4 text-xl font-light text-left rounded-xl transition-all duration-300
-                        ${
-                          activeTab === index
-                            ? "bg-blue-700  text-white shadow-md"
-                            : "text-blue-600 hover:bg-blue-200"
-                        }`}
+                ${
+                  activeTab === index
+                    ? "bg-blue-700 text-white shadow-md"
+                    : "text-blue-600 hover:bg-blue-200"
+                }`}
             >
               {tab.name}
             </button>

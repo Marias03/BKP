@@ -7,7 +7,6 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { FormEvent } from "react";
 import Link from "next/link";
-import prisma from "@/lib/prisma/client";
 
 type SigninFormProps = {
   label: string;

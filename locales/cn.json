@@ -1,0 +1,188 @@
+{
+  "LanguageDropdown": {
+    "spanish": "西班牙语",
+    "english": "英语",
+    "arabic": "阿拉伯语",
+    "chinese": "中文",
+    "russian": "俄语"
+  },
+  "Navbar": {
+    "menu": "菜单",
+    "documents": "我的文件",
+    "requiredDocuments": "所需文件",
+    "appointments": "预约安排",
+    "qrCode": "您的认证",
+    "signOut": "登出"
+  },
+  "Documents": {
+    "title": "我的文件",
+    "subtitle": "您今天想更新什么？",
+    "personalData": "个人资料",
+    "registration": "注册",
+    "medicalCertificate": "医疗证明",
+    "passport": "护照",
+    "fingerprints": "指纹",
+    "visa": "签证"
+  },
+  "Datos": {
+    "title": "填写您的个人资料",
+    "name": "名字：",
+    "surname": "姓氏：",
+    "birthdate": "出生日期：",
+    "passport": "护照：",
+    "phone": "电话：",
+    "nationality": "国籍：",
+    "url": "网址：",
+    "submit": "提交",
+    "success": "数据已保存！"
+  },
+  "Registracion": {
+    "title": "添加您的注册信息",
+    "residence": "当前居住地：",
+    "city": "城市：",
+    "address": "地址：",
+    "apartmentNumber": "公寓/房间号：",
+    "validFrom": "有效期自：",
+    "validUntil": "有效期至：",
+    "url": "网址：",
+    "submit": "提交",
+    "success": "注册信息已保存！"
+  },
+  "Cmedico": {
+    "title": "更新您的医疗证明",
+    "serial": "文件编号：",
+    "number": "文件号码：",
+    "issueDate": "签发日期：",
+    "url": "文件网址：",
+    "submit": "提交",
+    "success": "文件注册成功！"
+  },
+  "Passport": {
+    "title": "添加您的护照",
+    "serial": "文件编号：",
+    "number": "文件号码：",
+    "issuedBy": "签发机构：",
+    "issueDate": "签发日期：",
+    "url": "文件网址：",
+    "submit": "保存",
+    "success": "护照保存成功！"
+  },
+  "FingerPrints": {
+    "title": "更新您的指纹",
+    "serial": "文件编号：",
+    "number": "文件号码：",
+    "issueDate": "签发日期：",
+    "issuedBy": "签发机构：",
+    "url": "文件网址：",
+    "submit": "保存",
+    "success": "指纹注册成功！"
+  },
+  "Visa": {
+    "title": "更新您的签证",
+    "name": "名字：",
+    "surname": "姓氏：",
+    "passportNumber": "护照号码：",
+    "emissionDate": "签发日期：",
+    "entry": "有效期自：",
+    "until": "有效期至：",
+    "url": "文件网址：",
+    "submit": "保存",
+    "success": "签证申请注册成功！"
+  },
+  "Necesarios": {
+    "header": {
+      "title": "选择您的需求",
+      "subtitle": "您需要办理什么手续？"
+    },
+    "labels": {
+      "visa": "签证",
+      "registration": "注册",
+      "medical": "医疗证明",
+      "fingerprints": "指纹"
+    },
+    "visa": {
+      "title": "办理签证所需材料",
+      "items": [
+        "护照原件及首页复印件两份",
+        "最近一次签证复印件两份",
+        "所有盖章或其他签证页的复印件一份",
+        "注册原件及复印件两份",
+        "移民卡原件及复印件两份",
+        "由教务处出具的学生证明",
+        "付款收据",
+        "2张彩色照片，尺寸3x4"
+      ]
+    },
+    "registration": {
+      "title": "办理注册所需材料",
+      "items": ["护照原件", "移民卡原件", "学习证明", "最近一次注册证明"]
+    },
+    "medical": {
+      "title": "办理国家医疗证明所需材料",
+      "items": [
+        "护照原件",
+        "注册证明",
+        "移民卡",
+        "护照首页公证翻译件",
+        {
+          "label": "体检费用：",
+          "value": "7200 卢布"
+        }
+      ]
+    },
+    "fingerprints": {
+      "title": "办理指纹采集所需材料",
+      "items": [
+        "护照原件",
+        "护照首页公证翻译件",
+        "注册证明",
+        "移民卡",
+        "国家医疗体检结果"
+      ]
+    }
+  },
+  "Citas": {
+    "title": "预约安排",
+    "viewList": "查看列表",
+    "viewCalendar": "查看日历",
+    "newAppointment": "预约新时间"
+  },
+  "Contenido": {
+    "signOut": "登出"
+  },
+  "FormCita": {
+    "labels": {
+      "address": "地址",
+      "title": "手续",
+      "date": "日期",
+      "time": "时间",
+      "description": "描述"
+    },
+    "placeholders": {
+      "selectAddress": "请选择地址",
+      "title": "例如：签证，注册",
+      "description": "附加详情..."
+    },
+    "buttons": {
+      "submit": "预约"
+    },
+    "errors": {
+      "title": {
+        "required": "标题是必填项。",
+        "min": "标题至少需要3个字符。"
+      },
+      "date": {
+        "required": "日期是必填项。",
+        "past": "不能预约过去的时间。"
+      },
+      "time": {
+        "required": "时间是必填项。"
+      }
+    }
+  },
+  "CodigoQR": {
+    "message": "您的文件已成功验证。",
+    "instruction": "这是您的身份二维码：",
+    "note": "扫描此二维码以在任何授权地点验证您的身份。"
+  }
+}

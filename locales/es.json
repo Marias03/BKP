@@ -1,0 +1,193 @@
+{
+  "LanguageDropdown": {
+    "spanish": "Español",
+    "english": "English",
+    "arabic": "Arabic",
+    "chinese": "Chinese",
+    "russian": "Russian"
+  },
+  "Navbar": {
+    "menu": "Menú",
+    "documents": "Mis documentos",
+    "requiredDocuments": "Documentos necesarios",
+    "appointments": "Agendación de citas",
+    "qrCode": "Tu autenticación",
+    "signOut": "Cerrar sesión"
+  },
+  "Documents": {
+    "title": "Mis documentos",
+    "subtitle": "¿Qué te gustaría actualizar hoy?",
+    "personalData": "Datos personales",
+    "registration": "Registración",
+    "medicalCertificate": "Certificado médico",
+    "passport": "Pasaporte",
+    "fingerprints": "Huellas dactilares",
+    "visa": "Visa"
+  },
+  "Datos": {
+    "title": "Escribe tus datos personales",
+    "name": "Nombre:",
+    "surname": "Apellidos:",
+    "birthdate": "Fecha nacimiento:",
+    "passport": "Pasaporte:",
+    "phone": "Teléfono:",
+    "nationality": "Nacionalidad:",
+    "url": "Url:",
+    "submit": "Enviar",
+    "success": "¡Datos guardados!"
+  },
+  "Registracion": {
+    "title": "Añade tu registracion",
+    "residence": "Residencia actual:",
+    "city": "Ciudad:",
+    "address": "Dirección:",
+    "apartmentNumber": "Número de apartamento/habitación:",
+    "validFrom": "Validez desde:",
+    "validUntil": "Hasta:",
+    "url": "URL:",
+    "submit": "Enviar",
+    "success": "¡Registro guardado!"
+  },
+  "Cmedico": {
+    "title": "Actualiza tu certificado medico",
+    "serial": "Serie del documento:",
+    "number": "Número de documento:",
+    "issueDate": "Fecha de emisión:",
+    "url": "URL del documento:",
+    "submit": "Enviar",
+    "success": "¡Documento registrado exitosamente!"
+  },
+  "Passport": {
+    "title": "Añade tu Pasaporte",
+    "serial": "Serie del documento:",
+    "number": "Número de documento:",
+    "issuedBy": "Emitido por:",
+    "issueDate": "Fecha de emisión:",
+    "url": "URL del documento:",
+    "submit": "Guardar",
+    "success": "¡Pasaporte guardado exitosamente!"
+  },
+  "FingerPrints": {
+    "title": "Actualiza tus Huellas dactilares",
+    "serial": "Serie del documento:",
+    "number": "Número de documento:",
+    "issueDate": "Fecha de emisión:",
+    "issuedBy": "Emitido por:",
+    "url": "URL del documento:",
+    "submit": "Guardar",
+    "success": "¡Huellas dactilares registradas exitosamente!"
+  },
+  "Visa": {
+    "title": "Actualiza tu visa",
+    "name": "Nombres:",
+    "surname": "Apellidos:",
+    "passportNumber": "Número de pasaporte:",
+    "emissionDate": "Fecha de emisión:",
+    "entry": "Válida desde:",
+    "until": "Hasta:",
+    "url": "URL del documento:",
+    "submit": "Guardar",
+    "success": "¡Solicitud de visa registrada exitosamente!"
+  },
+  "Necesarios": {
+    "header": {
+      "title": "Elige tu necesidad",
+      "subtitle": "¿Qué trámite necesitas?"
+    },
+    "labels": {
+      "visa": "Visa",
+      "registration": "Registración",
+      "medical": "Certificado Médico",
+      "fingerprints": "Huellas Dactilares"
+    },
+    "visa": {
+      "title": "Requisitos para realizar la Visa",
+      "items": [
+        "Pasaporte original + 2 copias de la página principal",
+        "2 copias de la última visa realizada",
+        "1 copia de todas las páginas selladas o con otras visas",
+        "Registración original + 2 copias",
+        "Carta de migración original + 2 copias",
+        "Certificado estudiantil emitido por el decanato",
+        "Recibo de pago",
+        "2 fotos a color, 3x4"
+      ]
+    },
+    "registration": {
+      "title": "Requisitos para realizar La Registración",
+      "items": [
+        "Pasaporte original",
+        "Carta de migración original",
+        "Certificado de estudio",
+        "Última registración realizada"
+      ]
+    },
+    "medical": {
+      "title": "Requisitos para la realizacion del Certificado Médico Estatal",
+      "items": [
+        "Pasaporte original",
+        "Registración",
+        "Carta de migración",
+        "Traducción notariada de la primera página del pasaporte",
+        {
+          "label": "Costo de exámenes:",
+          "value": "7200 RUB"
+        }
+      ]
+    },
+    "fingerprints": {
+      "title": "Requisitos para la realizacion de Las Huellas Dactilares",
+      "items": [
+        "Pasaporte original",
+        "Traducción notariada de la primera página del pasaporte",
+        "Registración",
+        "Carta de migración",
+        "Resultados de exámenes médicos estatales"
+      ]
+    }
+  },
+  "Citas": {
+    "title": "Agendación de citas",
+    "viewList": "Ver Lista",
+    "viewCalendar": "Ver Calendario",
+    "newAppointment": "Agendar Nueva Cita"
+  },
+  "Contenido": {
+    "signOut": "Cerrar sesión"
+  },
+  "FormCita": {
+    "labels": {
+      "address": "Dirección",
+      "title": "Trámite",
+      "date": "Fecha",
+      "time": "Hora",
+      "description": "Descripción"
+    },
+    "placeholders": {
+      "selectAddress": "Seleccione una dirección",
+      "title": "Ej: Visa, Registración",
+      "description": "Detalles adicionales..."
+    },
+    "buttons": {
+      "submit": "Agendar Cita"
+    },
+    "errors": {
+      "title": {
+        "required": "El título es obligatorio.",
+        "min": "El título debe tener al menos 3 caracteres."
+      },
+      "date": {
+        "required": "La fecha es obligatoria.",
+        "past": "No puedes agendar en el pasado."
+      },
+      "time": {
+        "required": "La hora es obligatoria."
+      }
+    }
+  },
+  "CodigoQR": {
+    "message": "Tus documentos han sido verificados con éxito.",
+    "instruction": "Este es tu QR de identificación:",
+    "note": "Escanea este código QR para validar tu identidad en cualquier lugar autorizado."
+  }
+}

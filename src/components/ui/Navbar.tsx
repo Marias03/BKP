@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -110,16 +109,32 @@ export const Navbar = () => {
               </Link>
             </li>
 
-            <Link
-              href={localizePath("/codigoqr")}
-              className={`block py-2 px-3 text-white ${
-                path?.endsWith("/codigoqr")
-                  ? "font-bold md:border-b-2 md:border-white"
-                  : "hover:bg-blue-700 md:hover:bg-transparent"
-              }`}
-            >
-              {t("qrCode")}
-            </Link>
+            <li>
+              <Link
+                href={localizePath("/codigoqr")}
+                className={`block py-2 px-3 text-white ${
+                  path?.endsWith("/codigoqr")
+                    ? "font-bold md:border-b-2 md:border-white"
+                    : "hover:bg-blue-700 md:hover:bg-transparent"
+                }`}
+              >
+                {t("qrCode")}
+              </Link>
+            </li>
+
+            {/* Enlace al Checklist como página normal */}
+            <li>
+              <Link
+                href={localizePath("/checklist")}
+                className={`block py-2 px-3 text-white ${
+                  path?.endsWith("/checklist")
+                    ? "font-bold md:border-b-2 md:border-white"
+                    : "hover:bg-blue-700 md:hover:bg-transparent"
+                }`}
+              >
+                {t("checklist")}
+              </Link>
+            </li>
 
             {data && (
               <div className="hidden md:block">

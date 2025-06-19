@@ -9,6 +9,7 @@
   "Navbar": {
     "menu": "Menu",
     "documents": "My Documents",
+    "checklist": "Checklist",
     "requiredDocuments": "Required Documents",
     "appointments": "Appointment Scheduling",
     "qrCode": "Your Authentication",
@@ -189,5 +190,26 @@
     "message": "Your documents have been successfully verified.",
     "instruction": "This is your identification QR code:",
     "note": "Scan this QR code to validate your identity at any authorized location."
+  },
+  "CheckList": {
+    "title": "Checklist for Students",
+    "all_completed": "All tasks completed",
+    "restart": "Restart checklist",
+    "options": {
+      "recien_llegado": "New Arrival",
+      "estudiante_antiguo": "Returning Student"
+    },
+    "recien_llegado": [
+      "Purchase student medical insurance",
+      "Take medical exams (chest X-ray, HIV test)",
+      "Stay in the student dormitory (requires 2 photos, passport copy, insurance copy, medical exams)",
+      "Complete registration (within 7 days of arrival)",
+      "One week after registration, renew your student visa"
+    ],
+    "estudiante_antiguo": [
+      "Renew student insurance",
+      "Update medical exams",
+      "Renew registration and visa"
+    ]
   }
 }

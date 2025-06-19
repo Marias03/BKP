@@ -9,6 +9,7 @@
   "Navbar": {
     "menu": "Menú",
     "documents": "Mis documentos",
+    "checklist": "Lista de Verificación",
     "requiredDocuments": "Documentos necesarios",
     "appointments": "Agendación de citas",
     "qrCode": "Tu autenticación",
@@ -189,5 +190,26 @@
     "message": "Tus documentos han sido verificados con éxito.",
     "instruction": "Este es tu QR de identificación:",
     "note": "Escanea este código QR para validar tu identidad en cualquier lugar autorizado."
+  },
+  "CheckList": {
+    "title": "Checklist para Estudiantes",
+    "all_completed": "¡Todas las tareas completadas!",
+    "restart": "Reiniciar lista",
+    "options": {
+      "recien_llegado": "Recién Llegado",
+      "estudiante_antiguo": "Estudiante Antiguo"
+    },
+    "recien_llegado": [
+      "Comprar el seguro médico estudiantil",
+      "Realizarse exámenes médicos (flurografía, prueba de VIH)",
+      "Alojarse en el albergue estudiantil (se necesitan 2 fotos, copia de pasaporte, copia de seguro médico, exámenes médicos)",
+      "Realizar la registración (plazo máximo 7 días de su llegada)",
+      "Una semana después de realizar la registración debes renovar tu visa estudiantil"
+    ],
+    "estudiante_antiguo": [
+      "Renovar seguro estudiantil",
+      "Renovar exámenes médicos",
+      "Renovar registración y visa"
+    ]
   }
 }

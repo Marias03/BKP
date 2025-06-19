@@ -9,6 +9,7 @@
   "Navbar": {
     "menu": "菜单",
     "documents": "我的文件",
+    "checklist": "检查清单",
     "requiredDocuments": "所需文件",
     "appointments": "预约安排",
     "qrCode": "您的认证",
@@ -18,7 +19,7 @@
     "title": "我的文件",
     "subtitle": "您今天想更新什么？",
     "personalData": "个人资料",
-    "registration": "注册",
+    "registration": "落地签",
     "medicalCertificate": "医疗证明",
     "passport": "护照",
     "fingerprints": "指纹",
@@ -184,5 +185,22 @@
     "message": "您的文件已成功验证。",
     "instruction": "这是您的身份二维码：",
     "note": "扫描此二维码以在任何授权地点验证您的身份。"
+  },
+  "CheckList": {
+    "title": "学生清单",
+    "all_completed": "所有任务已完成",
+    "restart": "重新开始",
+    "options": {
+      "recien_llegado": "新到学生",
+      "estudiante_antiguo": "老生"
+    },
+    "recien_llegado": [
+      "购买学生医疗保险",
+      "进行体检（胸透、艾滋病检测）",
+      "入住学生宿舍（需提供2张照片、护照复印件、医保复印件、体检报告）",
+      "完成注册（到达后7天内）",
+      "注册后一周内需要续签学生签证"
+    ],
+    "estudiante_antiguo": ["续保学生医疗保险", "更新体检报告", "续签注册和签证"]
   }
 }

@@ -34,6 +34,7 @@ model User {
   passports Passport[]
   fingerPrints FingerPrints[]
   visas Visa[]
+  visaPayments VisaPayment[]
 
   @@map("users") 
 }
@@ -192,4 +193,11 @@ model Cita {
   @@map("Cita")
 }
 
-  
+model VisaPayment {
+  id             Int      @id @default(autoincrement())
+  userId         String
+  amount         Decimal
+  date           DateTime @default(now())
+
+  user  User @relation(fields: [userId], references: [id])
+}

@@ -1,9 +1,11 @@
 "use client";
+
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import ListaCitas from "./ListaCitas";
 import Calendario from "./calendario";
 import FormCita from "./formularios/FormCita";
+import { removeCita } from "@/actions/removeCita";
 
 export default function ClientComponent({
   citasIniciales,
@@ -14,23 +16,13 @@ export default function ClientComponent({
   const [citas, setCitas] = useState<any[]>(citasIniciales);
   const [vista, setVista] = useState("lista");
 
-  const agregarCita = async (nuevaCita: any) => {
-    const response = await fetch("/api/citas", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(nuevaCita),
-    });
-
-    const citaCreada = await response.json();
-    setCitas([...citas, citaCreada]);
+  const agregarCita = (nuevaCita: any) => {
+    setCitas((prev) => [...prev, nuevaCita]);
   };
 
-  const eliminarCita = async (id: any) => {
-    await fetch(`/api/citas/${id}`, {
-      method: "DELETE",
-    });
+  const eliminarCita = async (id: number) => {
+    await removeCita(id);
+
     setCitas(citas.filter((cita: any) => cita.id !== id));
   };
 

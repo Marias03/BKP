@@ -183,12 +183,21 @@
       "title": "Trámite",
       "date": "Fecha",
       "time": "Hora",
-      "description": "Descripción"
+      "description": "Descripción",
+      "appointmentType": "Tipo de cita"
     },
     "placeholders": {
       "selectAddress": "Seleccione una dirección",
-      "title": "Ej: Visa, Registración",
-      "description": "Detalles adicionales..."
+      "title": "Ej: Visa, Registro",
+      "description": "Detalles adicionales...",
+      "selectType": "Seleccione tipo...",
+      "visa": "Visa",
+      "registration": "Registro",
+      "other": "Otro"
+    },
+    "options": {
+      "visa": "Visa",
+      "registration": "Registro"
     },
     "buttons": {
       "submit": "Agendar Cita"
@@ -232,5 +241,17 @@
       "Renovar exámenes médicos",
       "Renovar registración y visa"
     ]
+  },
+  "offer": {
+    "title": "Terminos de oferta",
+    "content": "Al realizar el pago (1920 rublos) en nuestro sitio web, acepta que este servicio facilita el proceso de solicitud de visa estudiantil pero no garantiza su emisión, ya que la decisión final depende de las autoridades competentes (MBD). El pago no es reembolsable una vez iniciado el proceso, excepto en casos de errores por nuestra parte. Los datos proporcionados se procesan de acuerdo con la legislación rusa (Ley Federal N° 152-FZ \"Sobre la Protección de Datos Personales\")."
+  },
+  "StripeForm": {
+    "paymentError": "Error de pago",
+    "paymentSuccess": "💸 ¡Pago exitoso!",
+    "processing": "Procesando...",
+    "pay": "Pagar",
+    "terms": "He leído y acepto los",
+    "termsLink": "términos del servicio"
   }
 }

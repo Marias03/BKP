@@ -11,6 +11,7 @@ export default function FormCita({
 }) {
   const t = useTranslations("FormCita");
   const [direccion, setDireccion] = useState("");
+  const [tipoCita, setTipoCita] = useState(""); // Nuevo estado para el tipo de cita
   const [formData, setFormData] = useState<CitaType>({
     title: "",
     fecha: "",
@@ -23,10 +24,15 @@ export default function FormCita({
   const [isOpen, setOpen] = useState(false);
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === "tipoCita") {
+      setTipoCita(value);
+      setFormData((prev) => ({ ...prev, title: value }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const validarFormulario = (): boolean => {
@@ -34,7 +40,7 @@ export default function FormCita({
 
     if (!formData.title.trim()) {
       nuevosErrores.titulo = t("errors.title.required");
-    } else if (formData.title.trim().length < 3) {
+    } else if (formData.title.trim().length < 3 && formData.title !== "Visa") {
       nuevosErrores.titulo = t("errors.title.min");
     }
 
@@ -52,6 +58,10 @@ export default function FormCita({
 
     if (!formData.hora) {
       nuevosErrores.hora = t("errors.time.required");
+    }
+
+    if (!tipoCita) {
+      nuevosErrores.tipoCita = t("errors.type.required");
     }
 
     setErrores(nuevosErrores);
@@ -88,15 +98,18 @@ export default function FormCita({
       direccion: "",
     });
     setDireccion("");
+    setTipoCita("");
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!validarFormulario()) return;
 
-    if (formData.title == "Visa") {
+    if (tipoCita === "Visa") {
       setOpen(true);
-    } else await handlePaySuccess();
+    } else {
+      await handlePaySuccess();
+    }
   };
 
   return (
@@ -112,31 +125,56 @@ export default function FormCita({
             className="w-full p-2 border border-gray-300 rounded"
           >
             <option value="">{t("placeholders.selectAddress")}</option>
-            <option value="1">Gvardeiskaya 9</option>
-            <option value="2">Gvardeiskaya 32</option>
-            <option value="3">Universiade Village</option>
-            <option value="4">Gabriloba 77</option>
+            <option value="1">Дер универсиады,Д 9</option>
+            <option value="2">Гвардейская 32</option>
+            <option value="3">Гвардейская 9</option>
           </select>
         </div>
 
-        <div>
-          <label className="block mb-1 font-semibold">
-            {t("labels.title")}*
+        <div className="mb-4">
+          <label className="block mb-2 font-semibold">
+            {t("labels.appointmentType")}*
           </label>
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
+          <select
+            name="tipoCita"
+            value={tipoCita}
             onChange={handleChange}
-            placeholder={t("placeholders.title")}
             className={`w-full p-2 border rounded-md ${
-              errores.titulo ? "border-red-500" : "border-gray-300"
+              errores.tipoCita ? "border-red-500" : "border-gray-300"
             }`}
-          />
-          {errores.titulo && (
-            <p className="text-red-500 text-sm mt-1">{errores.titulo}</p>
+          >
+            <option value="">{t("placeholders.selectType")}</option>
+            <option value="Visa">{t("placeholders.visa")}</option>
+            <option value="Registracion">
+              {t("placeholders.registration")}
+            </option>
+            <option value="Other">{t("placeholders.other")}</option>
+          </select>
+          {errores.tipoCita && (
+            <p className="text-red-500 text-sm mt-1">{errores.tipoCita}</p>
           )}
         </div>
+
+        {tipoCita === "Other" && (
+          <div>
+            <label className="block mb-1 font-semibold">
+              {t("labels.customTitle")}*
+            </label>
+            <input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              placeholder={t("placeholders.customTitle")}
+              className={`w-full p-2 border rounded-md ${
+                errores.titulo ? "border-red-500" : "border-gray-300"
+              }`}
+            />
+            {errores.titulo && (
+              <p className="text-red-500 text-sm mt-1">{errores.titulo}</p>
+            )}
+          </div>
+        )}
 
         <div className="grid grid-cols-2 gap-4">
           <div>
@@ -195,7 +233,7 @@ export default function FormCita({
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
         >
-          {formData.title != "Visa" ? t("buttons.submit") : "Оплатить"}
+          {tipoCita === "Visa" ? "Оплатить" : t("buttons.submit")}
         </button>
       </form>
       <StripeModal

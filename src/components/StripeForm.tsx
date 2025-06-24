@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useTranslations } from "next-intl";
 
 export default function StripeForm({
   onClose,
@@ -8,6 +9,7 @@ export default function StripeForm({
   onClose: () => void;
   onSuccess: () => void;
 }) {
+  const t = useTranslations("StripeForm");
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
@@ -36,14 +38,14 @@ export default function StripeForm({
     setLoading(false);
 
     if (result.error) {
-      setMessage(result.error.message || "Ошибка оплаты");
+      setMessage(result.error.message || t("paymentError"));
     } else if (result.paymentIntent?.status === "succeeded") {
       await fetch("/api/log-payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: 1000 }),
+        body: JSON.stringify({ amount: 10000 }),
       });
-      setMessage("💸 Оплата успешно прошла!");
+      setMessage(t("paymentSuccess"));
       onSuccess();
       setTimeout(onClose, 2000);
     }
@@ -85,14 +87,14 @@ export default function StripeForm({
           onChange={(e) => setAgree(e.target.checked)}
           required
         />
-        Я ознакомлен и согласен с
+        {t("terms")}
         <a
           href="/offer"
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: "#0a60e7", textDecoration: "underline" }}
         >
-          условиями оферты
+          {t("termsLink")}
         </a>
       </label>
       <button
@@ -109,13 +111,20 @@ export default function StripeForm({
           fontSize: "16px",
         }}
       >
-        {loading ? "Обработка..." : "Оплатить"}
+        {loading ? t("processing") : t("pay")}
       </button>
       {message && (
         <div
           style={{
             marginTop: "10px",
-            color: message.includes("успешно") ? "green" : "crimson",
+            color:
+              message.includes("success") ||
+              message.includes("éxito") ||
+              message.includes("成功") ||
+              message.includes("успешно") ||
+              message.includes("نجاح")
+                ? "green"
+                : "crimson",
           }}
         >
           {message}

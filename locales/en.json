@@ -182,12 +182,21 @@
       "title": "Procedure",
       "date": "Date",
       "time": "Time",
-      "description": "Description"
+      "description": "Description",
+      "appointmentType": "Tipo de cita"
     },
     "placeholders": {
       "selectAddress": "Select an address",
       "title": "Eg: Visa, Registration",
-      "description": "Additional details..."
+      "description": "Additional details...",
+      "selectType": "Select Type...",
+      "visa": "Visa",
+      "registration": "Registration",
+      "other": "Other"
+    },
+    "options": {
+      "visa": "Visa",
+      "registration": "Registration"
     },
     "buttons": {
       "submit": "Schedule Appointment"
@@ -231,5 +240,21 @@
       "Update medical exams",
       "Renew registration and visa"
     ]
+  },
+  "Admin": {
+    "dashabord": "Dashboard"
+  },
+  "offer": {
+    "title": "Offer Terms",
+    "content": "By making a payment (1920 rubles) on our website, you agree that this service facilitates the student visa application process but does not guarantee its issuance, as the final decision depends on the relevant authorities (MBD). The payment is non-refundable once the process begins, except in cases of errors on our part. The provided data is processed in accordance with Russian legislation (Federal Law No. 152-FZ \"On Personal Data Protection\")."
+  },
+
+  "StripeForm": {
+    "paymentError": "Payment error",
+    "paymentSuccess": "payment successful!",
+    "processing": "Processing...",
+    "pay": "Pay",
+    "terms": "I have read and agree to the",
+    "ermsLink": "terms of service"
   }
 }

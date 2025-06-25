@@ -1,5 +1,7 @@
 "use client";
 
+import approveDocuments from "@/actions/admin/approveDocuments";
+import rejectDocuments from "@/actions/admin/rejectDocuments";
 import {
   User,
   Cita,
@@ -9,26 +11,53 @@ import {
   FingerPrints,
   Visa,
   VisaPayment,
+  ApprovedState,
+  Prisma,
 } from "@prisma/client";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { useState } from "react";
 
-type UserWithRelations = User & {
-  citas: Cita[];
-  registraciones: Registracion[];
-  cmedicos: Cmedico[];
-  passports: Passport[];
-  fingerPrints: FingerPrints[];
-  visas: Visa[];
-  visaPayments: VisaPayment[];
-};
+type UserWithRelations = Prisma.UserGetPayload<{ include: {
+  citas: true,
+  registraciones: true,
+  cmedicos: true,
+  passports: true,
+  fingerPrints: true,
+  visas: true,
+  visaPayments: true,
+  approvedState: true,
+},}>
 
 export default function UserList({ users }: { users: UserWithRelations[] }) {
   const [expandedUserId, setExpandedUserId] = useState<string | null>(null);
 
   const toggleExpand = (userId: string) => {
     setExpandedUserId(expandedUserId === userId ? null : userId);
+  };
+
+  const handleOnApprove = async (userId: string) => {
+    try {
+      const res = await approveDocuments(userId);
+
+      if(res.success) {
+        console.log("user docs have been approved")        
+      }
+    } catch (error) {
+      console.error("Error approving user:", error);
+    }
+  };
+
+  const handleOnReject = async (userId: string) => {
+    try {
+      const res = await rejectDocuments(userId);
+
+      if(res.success) {
+        console.log("user docs have been rejected")        
+      }
+    } catch (error) {
+      console.error("Error rejecting user:", error);
+    }
   };
 
   return (
@@ -67,7 +96,6 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                   <tr
                     key={user.id}
                     className="hover:bg-gray-50 cursor-pointer"
-                    onClick={() => toggleExpand(user.id)}
                   >
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
@@ -118,21 +146,27 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                         </span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button className="text-indigo-600 hover:text-indigo-900 mr-3">
-                        Редактировать
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium flex gap-2">
+                      <button disabled={user.approvedState?.state === "REJECTED"} onClick={() => handleOnReject(user.id)} className={`${user.approvedState?.state === "REJECTED" ? "text-gray-500" : "text-indigo-600 hover:text-indigo-900"} mr-3`}>
+                        Отклонить
                       </button>
+                      <button disabled={user.approvedState?.state === "APPROVED"} onClick={() => handleOnApprove(user.id)} className={`${user.approvedState?.state === "APPROVED" ? "text-gray-500" : "text-indigo-600 hover:text-indigo-900"} mr-3`}>
+                        Одобрить
+                      </button>
+
+                      <button className="text-indigo-600 hover:text-indigo-900 mr-3" onClick={() => toggleExpand(user.id)}>
+                        Подробнее
+                      </button>
+                      <p className="text-sm text-slate-300">{user.approvedState?.state.toLowerCase()}</p>
                     </td>
                   </tr>
 
-                  {/* Expanded details */}
                   {expandedUserId === user.id && (
                     <tr className="bg-gray-50">
                       <td colSpan={5} className="px-6 py-4">
                         <div className="space-y-6">
-                          {/* Document Sections */}
+                
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {/* Cmedicos Section */}
                             <div className="border rounded-lg p-4 bg-white">
                               <h3 className="text-lg font-medium text-gray-900 mb-3 flex items-center">
                                 <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded mr-2">
@@ -176,7 +210,6 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                               )}
                             </div>
 
-                            {/* Passports Section */}
                             <div className="border rounded-lg p-4 bg-white">
                               <h3 className="text-lg font-medium text-gray-900 mb-3 flex items-center">
                                 <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mr-2">
@@ -223,7 +256,6 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                               )}
                             </div>
 
-                            {/* FingerPrints Section */}
                             <div className="border rounded-lg p-4 bg-white">
                               <h3 className="text-lg font-medium text-gray-900 mb-3 flex items-center">
                                 <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded mr-2">
@@ -270,7 +302,6 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                               )}
                             </div>
 
-                            {/* Visas Section */}
                             <div className="border rounded-lg p-4 bg-white">
                               <h3 className="text-lg font-medium text-gray-900 mb-3 flex items-center">
                                 <span className="bg-red-100 text-red-800 text-xs px-2 py-1 rounded mr-2">
@@ -321,7 +352,6 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                             </div>
                           </div>
 
-                          {/* Visa Payments Section */}
                           <div className="border rounded-lg p-4 bg-white">
                             <h3 className="text-lg font-medium text-gray-900 mb-3">
                               Оплата виз ({user.visaPayments.length})
@@ -364,7 +394,6 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                             )}
                           </div>
 
-                          {/* Registraciones Section */}
                           <div className="border rounded-lg p-4 bg-white">
                             <h3 className="text-lg font-medium text-gray-900 mb-3">
                               Регистрации ({user.registraciones.length})

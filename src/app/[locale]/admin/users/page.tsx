@@ -17,6 +17,7 @@ export default async function UsersPage() {
       fingerPrints: true,
       visas: true,
       visaPayments: true,
+      approvedState: true,
     },
   });
 

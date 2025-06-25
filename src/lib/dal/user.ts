@@ -9,6 +9,7 @@ export type UserType = Prisma.UserGetPayload<{
     id: true,
     email: true,
     role: true,
+    approvedState: true,
   }
 }>;
 
@@ -22,6 +23,7 @@ export const currentUser = async (): Promise<UserType | null> => {
       id: true,
       email: true,
       role: true,
+      approvedState: true,
     },
   });
 

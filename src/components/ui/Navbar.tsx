@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -8,16 +9,17 @@ import LanguageDropdown from "../languageDropdown";
 import { useTranslations } from "next-intl";
 
 export const Navbar = () => {
+  const path = usePathname();
   const t = useTranslations("Navbar");
   const { data } = useSession();
 
-  const path = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const currentLocale = path?.split("/")[1] || "es";
 
   const localizePath = (path: string) => `/${currentLocale}${path}`;
 
-  if (path?.startsWith(`/${currentLocale}/auth`)) return null;
+  if (["admin", "auth"].some((key) => path.split("/").includes(key)))
+    return null;
 
   return (
     <nav className="bg-blue-600 w-full py-4 shadow-md">

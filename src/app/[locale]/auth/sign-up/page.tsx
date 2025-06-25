@@ -13,7 +13,7 @@ export default async function SignUpPage({ searchParams }: SignUpProps) {
   const user = await currentUser();
   const sessionCallback = callbackUrl || "/";
 
-  if (user) redirect("/dashboard");
+  if (user) redirect("/");
 
   return <SignUpSection sessionCallback={sessionCallback} />;
 }

@@ -1,15 +1,18 @@
 "use client";
+
 import { Spacer } from "@heroui/spacer";
 import StyledInput from "../styled/StyledInput";
 import StyledButton from "../styled/StyledButton";
 import { useActionState, useEffect, useState } from "react";
 import createUser from "@/actions/createUser";
+import { useRouter } from "@/i18n/navigation";
 
 type SigninFormProps = {
   label: string;
 };
 
 const SignupForm = ({ label }: SigninFormProps) => {
+  const router = useRouter();
   const [currentError, setCurrentError] = useState<string>("");
   const [{ error, success }, formAction, isPending] = useActionState(
     createUser,
@@ -25,12 +28,12 @@ const SignupForm = ({ label }: SigninFormProps) => {
       return;
     } else if (!isPending && success) {
       setCurrentError("");
+      router.push("/auth/sign-in");
     }
   }, [isPending, success, error]);
 
   return (
     <div className="relative">
-      {/* IMAGEN DE FONDO (SOLO ESTO ES NUEVO) */}
       <div className="fixed inset-0 -z-10">
         <img
           src="/fsing-up.jpeg"
@@ -39,10 +42,8 @@ const SignupForm = ({ label }: SigninFormProps) => {
         />
       </div>
 
-      {/* FORMULARIO ORIGINAL (EXACTAMENTE IGUAL) */}
       <form action={formAction} className="relative z-10">
         {" "}
-        {/* Mismo className */}
         <StyledInput placeholder="Email" type="email" name="email" />
         <Spacer y={1.5} />
         <StyledInput placeholder="Password" type="password" name="password" />

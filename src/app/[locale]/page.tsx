@@ -1,6 +1,9 @@
 import Carrusel from "@/components/carrusel";
+import authenticate from "@/auth/authenticate";
 
-function App() {
+async function App() {
+  await authenticate();
+
   return (
     <>
       <div className="min-h-screen bg-blue-100 flex flex-col">

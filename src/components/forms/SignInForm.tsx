@@ -6,13 +6,14 @@ import StyledButton from "../styled/StyledButton";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { FormEvent } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 type SigninFormProps = {
   label: string;
+  callback?: string;
 };
 
-const SigninForm = ({ label }: SigninFormProps) => {
+const SigninForm = ({ label, callback }: SigninFormProps) => {
   const router = useRouter();
 
   const handleOnSumit = async (e: FormEvent<HTMLFormElement>) => {
@@ -23,10 +24,8 @@ const SigninForm = ({ label }: SigninFormProps) => {
       email: form.get("email"),
       password: form.get("password"),
       redirect: true,
-      callbackUrl: "/en",
+      callbackUrl: callback,
     });
-
-    console.log(response);
 
     if (!response?.error) {
       router.push("/");
@@ -52,7 +51,7 @@ const SigninForm = ({ label }: SigninFormProps) => {
         <div className="flex items-center justify-center gap-2 w-full">
           <span className="text-gray-700">or</span>
 
-          <Link href="/en/auth/sign-up">
+          <Link href="/auth/sign-up">
             <button className="text-blue-800 hover:underline">Register</button>
           </Link>
         </div>

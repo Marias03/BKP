@@ -5,11 +5,14 @@ import AuthFormWrapper from "@/components/auth/AuthFormWrapper";
 import { Card, CardBody, CardHeader } from "@heroui/card";
 import SigninForm from "@/components/forms/SignInForm";
 import Navbar from "@/components/ui/Navbarsingin";
+import { Link } from "@/i18n/navigation";
 
 export default function SignInSection({
   sessionCallback,
+  redirectAdmin,
 }: {
   sessionCallback: string;
+  redirectAdmin?: string;
 }) {
   return (
     <div className="min-h-screen relative">
@@ -32,12 +35,19 @@ export default function SignInSection({
             <CardHeader className="flex flex-col justify-center items-center mt-6 mb-4">
               <h1 className="text-3xl font-semibold text-gray-800">Welcome</h1>
               <p className="text-sm font-normal text-gray-600">
-                Sign in to your account
+                Sign in to your account {!redirectAdmin && "Login As admin"}
               </p>
             </CardHeader>
 
             <CardBody className="flex justify-center">
-              <SigninForm label="Login" />
+              <SigninForm label="Login" callback={sessionCallback} />
+              {redirectAdmin && (
+                <Link href="/auth/admin-sign-in">
+                  <button className="text-blue-800 hover:underline">
+                    Login As admin
+                  </button>
+                </Link>
+              )}
             </CardBody>
           </Card>
         </AuthFormWrapper>

@@ -26,16 +26,19 @@
     "visa": "Visa"
   },
   "Datos": {
-    "title": "Escribe tus datos personales",
-    "name": "Nombre:",
-    "surname": "Apellidos:",
-    "birthdate": "Fecha nacimiento:",
-    "passport": "Pasaporte:",
-    "phone": "Teléfono:",
-    "nationality": "Nacionalidad:",
-    "url": "Url:",
+    "title": "Información Personal",
+    "name": "Nombre",
+    "surname": "Apellido",
+    "birthdate": "Fecha de Nacimiento",
+    "passport": "Número de Pasaporte",
+    "phone": "Número de Teléfono",
+    "nationality": "Nacionalidad",
+    "uploadImage": "Subir Imagen de Perfil",
+    "uploadButtonText": "Subir Imagen",
+    "imageUploadedSuccess": "¡Imagen Subida!",
     "submit": "Enviar",
-    "success": "¡Datos guardados!"
+    "success": "¡Datos guardados correctamente!",
+    "error": "Error: Por favor, verifica tus datos."
   },
   "Registracion": {
     "title": "Añade tu registracion",
@@ -46,49 +49,67 @@
     "validFrom": "Validez desde:",
     "validUntil": "Hasta:",
     "url": "URL:",
+
+    "uploadImage": "Subir imagen",
+    "uploadButtonText": "Seleccionar imagen",
+    "imageUploadedSuccess": "Imagen subida ✓",
+    "removeImage": "Eliminar imagen",
     "submit": "Enviar",
     "success": "¡Registro guardado!"
   },
   "Cmedico": {
-    "title": "Actualiza tu certificado medico",
-    "serial": "Serie del documento:",
-    "number": "Número de documento:",
-    "issueDate": "Fecha de emisión:",
-    "url": "URL del documento:",
+    "title": "Certificado Médico",
+    "serial": "Número de serie",
+    "number": "Número de documento",
+    "issueDate": "Fecha de emisión",
+    "medicalDocument": "Documento médico",
+    "uploadButtonText": "Subir documento",
+    "imageUploadedSuccess": "Documento cargado",
+    "uploadConfirmation": "Documento subido correctamente",
     "submit": "Enviar",
-    "success": "¡Documento registrado exitosamente!"
+    "success": "Éxito",
+    "error": "Error"
   },
   "Passport": {
-    "title": "Añade tu Pasaporte",
-    "serial": "Serie del documento:",
-    "number": "Número de documento:",
-    "issuedBy": "Emitido por:",
-    "issueDate": "Fecha de emisión:",
-    "url": "URL del documento:",
-    "submit": "Guardar",
-    "success": "¡Pasaporte guardado exitosamente!"
+    "title": "Información del Pasaporte",
+    "serial": "Número de Serie",
+    "number": "Número de Pasaporte",
+    "issuedBy": "Emitido Por",
+    "issueDate": "Fecha de Emisión",
+    "uploadImage": "Subir Imagen del Pasaporte",
+    "uploadButtonText": "Subir Imagen",
+    "imageUploadedSuccess": "¡Imagen Subida!",
+    "submit": "Enviar",
+    "success": "¡Datos del pasaporte guardados correctamente!",
+    "error": "Error: Por favor verifica tus datos."
   },
   "FingerPrints": {
-    "title": "Actualiza tus Huellas dactilares",
-    "serial": "Serie del documento:",
-    "number": "Número de documento:",
-    "issueDate": "Fecha de emisión:",
-    "issuedBy": "Emitido por:",
-    "url": "URL del documento:",
-    "submit": "Guardar",
-    "success": "¡Huellas dactilares registradas exitosamente!"
+    "title": "Información de Huellas Dactilares",
+    "serial": "Número de Serie",
+    "number": "Número de Documento",
+    "issueDate": "Fecha de Emisión",
+    "issuedBy": "Emitido Por",
+    "uploadImage": "Subir Imagen de Huellas",
+    "uploadButtonText": "Subir Imagen",
+    "imageUploadedSuccess": "¡Imagen Subida!",
+    "submit": "Enviar",
+    "success": "¡Datos de huellas guardados correctamente!",
+    "error": "Error: Por favor verifica tus datos."
   },
   "Visa": {
-    "title": "Actualiza tu visa",
-    "name": "Nombres:",
-    "surname": "Apellidos:",
-    "passportNumber": "Número de pasaporte:",
-    "emissionDate": "Fecha de emisión:",
-    "entry": "Válida desde:",
-    "until": "Hasta:",
-    "url": "URL del documento:",
-    "submit": "Guardar",
-    "success": "¡Solicitud de visa registrada exitosamente!"
+    "title": "Información de Visa",
+    "name": "Nombre",
+    "surname": "Apellido",
+    "passportNumber": "Número de Pasaporte",
+    "emissionDate": "Fecha de Emisión",
+    "entry": "Fecha de Entrada",
+    "until": "Válido Hasta",
+    "uploadImage": "Subir Imagen de Visa",
+    "uploadButtonText": "Subir Imagen",
+    "imageUploadedSuccess": "¡Imagen Subida!",
+    "submit": "Enviar",
+    "success": "¡Datos de visa guardados correctamente!",
+    "error": "Error: Por favor verifica tus datos."
   },
   "Necesarios": {
     "header": {
@@ -162,12 +183,21 @@
       "title": "Trámite",
       "date": "Fecha",
       "time": "Hora",
-      "description": "Descripción"
+      "description": "Descripción",
+      "appointmentType": "Tipo de cita"
     },
     "placeholders": {
       "selectAddress": "Seleccione una dirección",
-      "title": "Ej: Visa, Registración",
-      "description": "Detalles adicionales..."
+      "title": "Ej: Visa, Registro",
+      "description": "Detalles adicionales...",
+      "selectType": "Seleccione tipo...",
+      "visa": "Visa",
+      "registration": "Registro",
+      "other": "Otro"
+    },
+    "options": {
+      "visa": "Visa",
+      "registration": "Registro"
     },
     "buttons": {
       "submit": "Agendar Cita"
@@ -211,5 +241,17 @@
       "Renovar exámenes médicos",
       "Renovar registración y visa"
     ]
+  },
+  "offer": {
+    "title": "Terminos de oferta",
+    "content": "Al realizar el pago (1920 rublos) en nuestro sitio web, acepta que este servicio facilita el proceso de solicitud de visa estudiantil pero no garantiza su emisión, ya que la decisión final depende de las autoridades competentes (MBD). El pago no es reembolsable una vez iniciado el proceso, excepto en casos de errores por nuestra parte. Los datos proporcionados se procesan de acuerdo con la legislación rusa (Ley Federal N° 152-FZ \"Sobre la Protección de Datos Personales\")."
+  },
+  "StripeForm": {
+    "paymentError": "Error de pago",
+    "paymentSuccess": "💸 ¡Pago exitoso!",
+    "processing": "Procesando...",
+    "pay": "Pagar",
+    "terms": "He leído y acepto los",
+    "termsLink": "términos del servicio"
   }
 }

@@ -7,6 +7,8 @@ export type CitaType = {
 };
 
 export type ErrorType = {
+  tramite?: string;
+  title?: string;
   titulo?: string;
   fecha?: string;
   hora?: string;

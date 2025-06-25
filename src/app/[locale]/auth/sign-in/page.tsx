@@ -13,7 +13,7 @@ export default async function SignInPage({ searchParams }: SignInProps) {
   const user = await currentUser();
   const sessionCallback = callbackUrl || "/";
 
-  if (user) redirect("/dashboard");
+  if (user) redirect("/");
 
-  return <SignInSection sessionCallback={sessionCallback} />;
+  return <SignInSection sessionCallback={sessionCallback} redirectAdmin />;
 }

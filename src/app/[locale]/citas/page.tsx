@@ -1,10 +1,8 @@
-"use server";
+import authenticate from "@/auth/authenticate";
 import CitasComponent from "@/components/CitasComponent";
 
-export default async function CitasPage({
-  params,
-}: {
-  params: { locale: string };
-}) {
+export default async function CitasPage() {
+  await authenticate();
+
   return <CitasComponent />;
 }

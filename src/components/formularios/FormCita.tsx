@@ -71,14 +71,14 @@ export default function FormCita({
       hora: horaDate,
       inicio: new Date(`${formData.fecha}T${formData.hora}:00`).toISOString(),
       fin: new Date(
-          new Date(`${formData.fecha}T${formData.hora}:00`).getTime() +
+        new Date(`${formData.fecha}T${formData.hora}:00`).getTime() +
           60 * 60 * 1000
       ).toISOString(),
     };
 
     setOpen(false);
-    await createCita(cita);
-    onSubmit(cita);
+    const createdCita = await createCita(cita);
+    onSubmit(createdCita);
 
     setFormData({
       title: "",
@@ -96,7 +96,7 @@ export default function FormCita({
 
     if (formData.title == "Visa") {
       setOpen(true);
-    } else await handlePaySuccess()
+    } else await handlePaySuccess();
   };
 
   return (
@@ -120,7 +120,9 @@ export default function FormCita({
         </div>
 
         <div>
-          <label className="block mb-1 font-semibold">{t("labels.title")}*</label>
+          <label className="block mb-1 font-semibold">
+            {t("labels.title")}*
+          </label>
           <input
             type="text"
             name="title"
@@ -193,7 +195,7 @@ export default function FormCita({
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
         >
-          {(formData.title != 'Visa') ? t("buttons.submit") : "Оплатить"}
+          {formData.title != "Visa" ? t("buttons.submit") : "Оплатить"}
         </button>
       </form>
       <StripeModal

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:https": "node server.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -27,6 +28,7 @@
     "bcrypt": "^5.1.1",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.4.7",
+    "https-localhost": "^4.7.1",
     "install": "^0.13.0",
     "nanoid": "^5.1.2",
     "next": "^15.3.3",

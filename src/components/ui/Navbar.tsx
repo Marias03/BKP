@@ -18,7 +18,7 @@ export const Navbar = () => {
 
   const localizePath = (path: string) => `/${currentLocale}${path}`;
 
-  if (["admin", "auth"].some((key) => path.split("/").includes(key)))
+  if (["admin", "auth", "info"].some((key) => path.split("/").includes(key)))
     return null;
 
   return (
@@ -113,7 +113,7 @@ export const Navbar = () => {
 
             <li>
               <Link
-                href={localizePath("/codigoqr")}
+                href={localizePath("/dashboard")}
                 className={`block py-2 px-3 text-white ${
                   path?.endsWith("/codigoqr")
                     ? "font-bold md:border-b-2 md:border-white"

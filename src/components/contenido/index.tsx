@@ -16,7 +16,7 @@ export default function Contenido({ user }: { user: UserType | null }) {
       <Button
         color="danger"
         variant="shadow"
-        onPress={() => signOut({ callbackUrl: "en/auth/sign-in" })}
+        onPress={() => signOut({ callbackUrl: "/en/auth/sign-in" })}
         className="font-semibold"
       >
         {t("signOut")}

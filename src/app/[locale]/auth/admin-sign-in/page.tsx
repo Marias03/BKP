@@ -11,9 +11,9 @@ type SignInProps = {
 export default async function SignInPage({ searchParams }: SignInProps) {
   const { callbackUrl } = await searchParams;
   const user = await currentUser();
-  const sessionCallback = callbackUrl || "/";
+  const sessionCallback = callbackUrl || "/admin";
 
-  if (user) redirect("/");
+  if (user) redirect("/admin");
 
-  return <SignInSection sessionCallback={sessionCallback} redirectAdmin />;
+  return <SignInSection sessionCallback={sessionCallback} />;
 }

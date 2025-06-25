@@ -43,7 +43,7 @@ const authOptions = {
     strategy: "jwt",
   },
   pages: {
-    signIn: "/auth/sign-in",
+    signIn: "/en/auth/sign-in",
   },
 } satisfies AuthOptions;
 

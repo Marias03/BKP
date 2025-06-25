@@ -18,7 +18,8 @@ export const Navbar = () => {
 
   const localizePath = (path: string) => `/${currentLocale}${path}`;
 
-  if (path.split("/").includes("admin")) return null;
+  if (["admin", "auth"].some((key) => path.split("/").includes(key)))
+    return null;
 
   return (
     <nav className="bg-blue-600 w-full py-4 shadow-md">

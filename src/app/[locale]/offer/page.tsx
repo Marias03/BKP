@@ -1,20 +1,14 @@
+"use client";
+
 import { useTranslations } from "next-intl";
+
 export default function OfferPage() {
-  const t = useTranslations("StripeForm");
+  const t = useTranslations("offer");
   return (
     <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Условия оферты</h1>
+      <h1 className="text-2xl font-bold mb-4">{t("title")}</h1>
       <div className="prose prose-sm">
-        <p>
-          Осуществляя оплату (1920 р)на нашем сайте, вы соглашаетесь с тем, что
-          данная услуга облегчает процесс оформления студенческой визы, но не
-          гарантирует ее получение, поскольку окончательное решение зависит от
-          соответствующих органов (МБД). Оплата не подлежит возврату после
-          начала процесса, за исключением ошибок с нашей стороны.
-          Предоставленные данные обрабатываются в соответствии с российским
-          законодательством (Федеральный закон № 152-ФЗ «О защите персональных
-          данных»).
-        </p>
+        <p>{t("content")}</p>
       </div>
     </div>
   );

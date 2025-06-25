@@ -34,30 +34,30 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
   return (
     <div className="p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold text-gray-800 mb-6">
-        Listado de Usuarios
+        Список пользователей
       </h2>
 
       {users.length === 0 ? (
-        <p className="text-gray-500">No hay usuarios registrados</p>
+        <p className="text-gray-500">Нет зарегистрированных пользователей</p>
       ) : (
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Usuario
+                  Пользователь
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Email
+                  Эл. почта
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Rol
+                  Роль
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Documentos
+                  Документы
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Acciones
+                  Действия
                 </th>
               </tr>
             </thead>
@@ -82,7 +82,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                         )}
                         <div className="ml-4">
                           <div className="text-sm font-medium text-gray-900">
-                            {user.email || "Sin nombre"}
+                            {user.email || "Без имени"}
                           </div>
                         </div>
                       </div>
@@ -105,22 +105,22 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       <div className="flex space-x-2">
                         <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">
-                          CM: {user.cmedicos.length}
+                          МС: {user.cmedicos.length}
                         </span>
                         <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
-                          Pass: {user.passports.length}
+                          Пасп: {user.passports.length}
                         </span>
                         <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">
-                          FP: {user.fingerPrints.length}
+                          ОП: {user.fingerPrints.length}
                         </span>
                         <span className="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">
-                          Visa: {user.visas.length}
+                          Виза: {user.visas.length}
                         </span>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <button className="text-indigo-600 hover:text-indigo-900 mr-3">
-                        Editar
+                        Редактировать
                       </button>
                     </td>
                   </tr>
@@ -138,7 +138,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                 <span className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded mr-2">
                                   {user.cmedicos.length}
                                 </span>
-                                Certificados Médicos
+                                Медицинские справки
                               </h3>
                               {user.cmedicos.length > 0 ? (
                                 <div className="space-y-4">
@@ -148,13 +148,13 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                       className="border-b pb-3 last:border-b-0"
                                     >
                                       <p className="text-sm font-medium">
-                                        Serial: {doc.serial}
+                                        Серийный номер: {doc.serial}
                                       </p>
                                       <p className="text-sm">
-                                        Número: {doc.numberdoc}
+                                        Номер: {doc.numberdoc}
                                       </p>
                                       <p className="text-sm">
-                                        Fecha: {doc.datedoc}
+                                        Дата: {doc.datedoc}
                                       </p>
                                       {doc.imageUrl && (
                                         <a
@@ -163,7 +163,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                           rel="noopener noreferrer"
                                           className="text-blue-600 text-sm underline"
                                         >
-                                          Ver documento
+                                          Просмотреть документ
                                         </a>
                                       )}
                                     </div>
@@ -171,7 +171,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                 </div>
                               ) : (
                                 <p className="text-gray-500 text-sm">
-                                  No hay certificados médicos
+                                  Нет медицинских справок
                                 </p>
                               )}
                             </div>
@@ -182,7 +182,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                 <span className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mr-2">
                                   {user.passports.length}
                                 </span>
-                                Pasaportes
+                                Паспорта
                               </h3>
                               {user.passports.length > 0 ? (
                                 <div className="space-y-4">
@@ -192,16 +192,16 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                       className="border-b pb-3 last:border-b-0"
                                     >
                                       <p className="text-sm font-medium">
-                                        Serial: {doc.seriall}
+                                        Серийный номер: {doc.seriall}
                                       </p>
                                       <p className="text-sm">
-                                        Número: {doc.numberpas}
+                                        Номер: {doc.numberpas}
                                       </p>
                                       <p className="text-sm">
-                                        Emisión: {doc.emisionp}
+                                        Выдача: {doc.emisionp}
                                       </p>
                                       <p className="text-sm">
-                                        Fecha: {doc.datepas}
+                                        Дата: {doc.datepas}
                                       </p>
                                       {doc.imageUrl && (
                                         <a
@@ -210,7 +210,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                           rel="noopener noreferrer"
                                           className="text-blue-600 text-sm underline"
                                         >
-                                          Ver documento
+                                          Просмотреть документ
                                         </a>
                                       )}
                                     </div>
@@ -218,7 +218,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                 </div>
                               ) : (
                                 <p className="text-gray-500 text-sm">
-                                  No hay pasaportes
+                                  Нет паспортов
                                 </p>
                               )}
                             </div>
@@ -229,7 +229,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                 <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded mr-2">
                                   {user.fingerPrints.length}
                                 </span>
-                                Huellas Digitales
+                                Отпечатки пальцев
                               </h3>
                               {user.fingerPrints.length > 0 ? (
                                 <div className="space-y-4">
@@ -239,16 +239,16 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                       className="border-b pb-3 last:border-b-0"
                                     >
                                       <p className="text-sm font-medium">
-                                        Serial: {doc.serialf}
+                                        Серийный номер: {doc.serialf}
                                       </p>
                                       <p className="text-sm">
-                                        Número: {doc.numberf}
+                                        Номер: {doc.numberf}
                                       </p>
                                       <p className="text-sm">
-                                        Emisión: {doc.emision}
+                                        Выдача: {doc.emision}
                                       </p>
                                       <p className="text-sm">
-                                        Fecha: {doc.datef}
+                                        Дата: {doc.datef}
                                       </p>
                                       {doc.imageUrl && (
                                         <a
@@ -257,7 +257,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                           rel="noopener noreferrer"
                                           className="text-blue-600 text-sm underline"
                                         >
-                                          Ver documento
+                                          Просмотреть документ
                                         </a>
                                       )}
                                     </div>
@@ -265,7 +265,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                 </div>
                               ) : (
                                 <p className="text-gray-500 text-sm">
-                                  No hay registros de huellas
+                                  Нет записей отпечатков
                                 </p>
                               )}
                             </div>
@@ -276,7 +276,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                 <span className="bg-red-100 text-red-800 text-xs px-2 py-1 rounded mr-2">
                                   {user.visas.length}
                                 </span>
-                                Visas
+                                Визы
                               </h3>
                               {user.visas.length > 0 ? (
                                 <div className="space-y-4">
@@ -289,16 +289,16 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                         {doc.namev} {doc.surnamev}
                                       </p>
                                       <p className="text-sm">
-                                        Número: {doc.nump}
+                                        Номер: {doc.nump}
                                       </p>
                                       <p className="text-sm">
-                                        Emisión: {doc.emisiondate}
+                                        Выдача: {doc.emisiondate}
                                       </p>
                                       <p className="text-sm">
-                                        Entrada: {doc.entry}
+                                        Въезд: {doc.entry}
                                       </p>
                                       <p className="text-sm">
-                                        Válido hasta: {doc.until}
+                                        Действительна до: {doc.until}
                                       </p>
                                       {doc.imageUrl && (
                                         <a
@@ -307,7 +307,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                           rel="noopener noreferrer"
                                           className="text-blue-600 text-sm underline"
                                         >
-                                          Ver documento
+                                          Просмотреть документ
                                         </a>
                                       )}
                                     </div>
@@ -315,7 +315,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                 </div>
                               ) : (
                                 <p className="text-gray-500 text-sm">
-                                  No hay visas
+                                  Нет виз
                                 </p>
                               )}
                             </div>
@@ -324,7 +324,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                           {/* Visa Payments Section */}
                           <div className="border rounded-lg p-4 bg-white">
                             <h3 className="text-lg font-medium text-gray-900 mb-3">
-                              Pagos de Visa ({user.visaPayments.length})
+                              Оплата виз ({user.visaPayments.length})
                             </h3>
                             {user.visaPayments.length > 0 ? (
                               <div className="overflow-x-auto">
@@ -332,10 +332,10 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                   <thead className="bg-gray-100">
                                     <tr>
                                       <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Fecha
+                                        Дата
                                       </th>
                                       <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Cantidad
+                                        Сумма
                                       </th>
                                     </tr>
                                   </thead>
@@ -359,7 +359,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                               </div>
                             ) : (
                               <p className="text-gray-500 text-sm">
-                                No hay pagos registrados
+                                Нет зарегистрированных платежей
                               </p>
                             )}
                           </div>
@@ -367,7 +367,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                           {/* Registraciones Section */}
                           <div className="border rounded-lg p-4 bg-white">
                             <h3 className="text-lg font-medium text-gray-900 mb-3">
-                              Registraciones ({user.registraciones.length})
+                              Регистрации ({user.registraciones.length})
                             </h3>
                             {user.registraciones.length > 0 ? (
                               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -377,23 +377,23 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                     className="border rounded-lg p-3 bg-gray-50"
                                   >
                                     <h4 className="font-medium text-gray-800">
-                                      Residencia: {reg.residence}
+                                      Место жительства: {reg.residence}
                                     </h4>
                                     <p className="text-sm text-gray-600">
-                                      Ciudad: {reg.city}
+                                      Город: {reg.city}
                                     </p>
                                     <p className="text-sm text-gray-600">
-                                      Dirección: {reg.adress}
+                                      Адрес: {reg.adress}
                                     </p>
                                     <p className="text-sm text-gray-600">
-                                      Apartamento: {reg.apartamentNumber}
+                                      Квартира: {reg.apartamentNumber}
                                     </p>
                                     <p className="text-sm text-gray-600">
-                                      Estado: {reg.validation}
+                                      Статус: {reg.validation}
                                     </p>
                                     {reg.finished && (
                                       <p className="text-sm text-gray-600">
-                                        Finalizado:{" "}
+                                        Завершено:{" "}
                                         {format(new Date(reg.finished), "PPP", {
                                           locale: es,
                                         })}
@@ -407,7 +407,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                           rel="noopener noreferrer"
                                           className="text-blue-600 text-sm underline"
                                         >
-                                          Ver comprobante
+                                          Просмотреть подтверждение
                                         </a>
                                       </div>
                                     )}
@@ -416,7 +416,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                               </div>
                             ) : (
                               <p className="text-gray-500 text-sm">
-                                No hay registraciones
+                                Нет регистраций
                               </p>
                             )}
                           </div>
@@ -424,7 +424,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                           {/* Citas Section */}
                           <div className="border rounded-lg p-4 bg-white">
                             <h3 className="text-lg font-medium text-gray-900 mb-3">
-                              Citas ({user.citas.length})
+                              Встречи ({user.citas.length})
                             </h3>
                             {user.citas.length > 0 ? (
                               <div className="overflow-x-auto">
@@ -432,16 +432,16 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                   <thead className="bg-gray-100">
                                     <tr>
                                       <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Fecha
+                                        Дата
                                       </th>
                                       <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Título
+                                        Название
                                       </th>
                                       <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Horario
+                                        Время
                                       </th>
                                       <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Dirección
+                                        Адрес
                                       </th>
                                     </tr>
                                   </thead>
@@ -454,7 +454,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                                           })}
                                         </td>
                                         <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">
-                                          {cita.title || "Sin título"}
+                                          {cita.title || "Без названия"}
                                           {cita.descripcion && (
                                             <p className="text-xs text-gray-500">
                                               {cita.descripcion}
@@ -480,7 +480,7 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
                               </div>
                             ) : (
                               <p className="text-gray-500 text-sm">
-                                No hay citas programadas
+                                Нет запланированных встреч
                               </p>
                             )}
                           </div>

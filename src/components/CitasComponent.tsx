@@ -14,7 +14,7 @@ export default async function CitasComponent() {
     },
   });
 
-  // Convertir fechas a string para la serialización
+
 
   return <ClientComponent citasIniciales={citasIniciales} />;
 }

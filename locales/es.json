@@ -216,11 +216,7 @@
       }
     }
   },
-  "CodigoQR": {
-    "message": "Tus documentos han sido verificados con éxito.",
-    "instruction": "Este es tu QR de identificación:",
-    "note": "Escanea este código QR para validar tu identidad en cualquier lugar autorizado."
-  },
+  
   "CheckList": {
     "title": "Checklist para Estudiantes",
     "all_completed": "¡Todas las tareas completadas!",
@@ -253,5 +249,28 @@
     "pay": "Pagar",
     "terms": "He leído y acepto los",
     "termsLink": "términos del servicio"
+  },
+  "Admin": {
+    "userDashboard": "Tu verificacion",
+    "userInfo": "Información del Usuario",
+    "user": "Usuario",
+    "updateQR": "Actualizar código QR",
+    "qrCode": "Código QR",
+    "qrCodeDetails": "Detalles del Código QR",
+    "qrCodeExpiry": "Expira en",
+    "qrCodeStatus": "Estado",
+    "qrCodeActive": "Activo",
+    "qrCodeInactive": "Inactivo",
+    "qrCodeGenerate": "Generar nuevo código QR",
+    "qrCodeGenerating": "Generando código QR...",
+    "qrCodeError": "Error al generar el código QR",
+    "showQRCode": "Mostrar código QR",
+    "yourQRCode": "Tu código QR",
+    "clickToViewQR": "Haz clic para ver el código QR",
+    "approvalStatus": "Estado de aprobación",
+    "role": "Rol",
+    "lastUpdated": "Última actualización",
+    "scanQRMessage": "Escanea este código para verificar tu identidad",
+    "generateNewQR": "Generar nuevo QR"
   }
 }

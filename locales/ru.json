@@ -90,6 +90,8 @@
     "issueDate": "Дата выдачи:",
     "issuedBy": "Выдано:",
     "url": "URL документа:",
+   "uploadImage": "Загрузить изображение ",
+     "uploadButtonText": "Загрузить изображение",
     "submit": "Сохранить",
     "success": "Отпечатки пальцев успешно зарегистрированы!"
   },
@@ -101,7 +103,8 @@
     "emissionDate": "Дата выдачи:",
     "entry": "Действительна с:",
     "until": "Действительна до:",
-    "url": "URL документа:",
+    "uploadImage": "Загрузить изображение",
+    "uploadButtonText": "Загрузить изображение",
     "submit": "Сохранить",
     "success": "Заявка на визу успешно зарегистрирована!"
   },
@@ -252,7 +255,30 @@
     "paymentSuccess": " Оплата успешно прошла!",
     "processing": "Обработка...",
     "pay": "Оплатить",
-    "terms": "Я ознакомлен и согласен с",
+    "terms": "Я ознакомлен и согласен c",
     "termsLink": "условиями оферты"
+  },
+  "Admin": {
+    "userDashboard": "ваша проверка",
+    "userInfo": "Информация o пользователе",
+    "user": "Пользователь",
+    "updateQR": "Обновить QR-код",
+    "qrCode": "QR-код",
+    "qrCodeDetails": "Детали QR-кода",
+    "qrCodeExpiry": "Срок действия до",
+    "qrCodeStatus": "Статус",
+    "qrCodeActive": "Активный",
+    "qrCodeInactive": "Неактивный",
+    "qrCodeGenerate": "Сгенерировать новый QR-код",
+    "qrCodeGenerating": "Генерация QR-кода...",
+    "qrCodeError": "Ошибка при генерации QR-кода",
+    "showQRCode": "Показать QR-код",
+    "yourQRCode": "Ваш QR-код",
+    "clickToViewQR": "Нажмите, чтобы просмотреть QR-код",
+    "approvalStatus": "Статус подтверждения",
+    "role": "Роль",
+    "lastUpdated": "Последнее обновление",
+    "scanQRMessage": "Отсканируйте этот код для подтверждения личности",
+    "generateNewQR": "Создать новый QR-код"
   }
 }

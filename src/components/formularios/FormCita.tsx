@@ -60,7 +60,7 @@ export default function FormCita({
       nuevosErrores.hora = t("errors.time.required");
     }
 
-    if (!tipoCita) {
+    if (!tipoCita) {  
       nuevosErrores.tipoCita = t("errors.type.required");
     }
 

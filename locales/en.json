@@ -242,7 +242,19 @@
     ]
   },
   "Admin": {
-    "dashabord": "Dashboard"
+    "dashboard": "Your verification",
+    "userDashboard": "User Dashboard",
+    "user": "User Information",
+    "role": "Role",
+    "approvalStatus": "Approval Status",
+    "lastUpdated": "Last Updated",
+    "qrCode": "QR Code",
+    "clickToViewQR": "Click to view your QR code",
+    "showQRCode": "Show QR Code",
+    "yourQRCode": "Your QR Code",
+    "scanQRMessage": "Scan this QR code to verify your identity",
+    "updateQR": "Update QR Code",
+    "generateNewQR": "Generate New QR Code"
   },
   "offer": {
     "title": "Offer Terms",

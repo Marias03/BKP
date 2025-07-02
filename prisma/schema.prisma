@@ -28,6 +28,7 @@ model User {
   citas         Cita[]
   approvedState ApprovedState?
   qrcodes     Qrcode[]
+  telegramId String @default("")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -37,6 +38,7 @@ model User {
   fingerPrints FingerPrints[]
   visas Visa[]
   visaPayments VisaPayment[]
+  
 
   @@map("users") 
 }
@@ -228,4 +230,16 @@ model VisaPayment {
   date           DateTime @default(now())
 
   user  User @relation(fields: [userId], references: [id])
+}
+
+
+model Appointment {
+  id          String   @id @default(uuid())
+  fecha       DateTime  
+  user_id     String?  
+  status      String   @default("available") 
+  description String?
+  address     String?
+
+  @@index([fecha, status]) 
 }

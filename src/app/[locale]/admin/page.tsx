@@ -8,7 +8,7 @@ export default async function AdminDashboard() {
     return (
       <>
         <AdminLayout>
-          <h1>Hello </h1>
+          <h1> Это ваша рабочая панель!</h1>
         </AdminLayout>
       </>
     );

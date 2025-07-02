@@ -257,5 +257,30 @@
     "pay": "دفع",
     "terms": "لقد قرأت وأوافق على",
     "termsLink": "شروط الخدمة"
+  },
+  "Admin": {
+    "userDashboard":  "التحقق الخاص بك" ,
+    "userInfo": "معلومات المستخدم",
+    "user": "المستخدم",   
+    "updateQR": "تحديث رمز QR",
+    "qrCode": "رمز QR",
+    "qrCodeDetails": "تفاصيل رمز QR",
+    "qrCodeExpiry": "ينتهي في",
+    "qrCodeStatus": "الحالة",
+    "qrCodeActive": "نشط",
+    "qrCodeInactive": "غير نشط",
+    "qrCodeGenerate": "إنشاء رمز QR جديد",
+    "qrCodeGenerating": "جاري إنشاء رمز QR...",
+    "qrCodeError": "خطأ في إنشاء رمز QR",
+    "showQRCode": "عرض رمز QR",
+    "yourQRCode": "رمز QR الخاص بك",
+    "clickToViewQR": "انقر لعرض رمز QR",
+    "approvalStatus": "حالة الموافقة",
+    "role": "الدور",
+    "lastUpdated": "آخر تحديث",
+    "qrCodeGenerating": "جاري إنشاء رمز QR...",
+    "qrCodeError": "خطأ في إنشاء رمز QR",
+    "scanQRMessage": "امسح هذا الرمز للتحقق من هويتك",
+    "generateNewQR": "إنشاء رمز QR جديد"
   }
 }

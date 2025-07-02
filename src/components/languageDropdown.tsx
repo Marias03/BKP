@@ -53,9 +53,9 @@ export default function LanguageDropdown() {
 
     const segments = pathname.split("/");
     if (segments[1] === currentLocale) {
-      segments[1] = languageCode; // replace locale
+      segments[1] = languageCode; 
     } else {
-      segments.splice(1, 0, languageCode); // insert locale
+      segments.splice(1, 0, languageCode); 
     }
 
     const newPath = segments.join("/");

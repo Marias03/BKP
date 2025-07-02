@@ -244,5 +244,27 @@
     "pay": "支付",
     "terms": "我已阅读并同意",
     "termsLink": "服务条款"
+  },
+  "Admin": {
+    "userDashboard": "您的驗證",
+    "userInfo": "用户信息",
+    "user": "用户",
+    "qrCode": "二维码",
+    "qrCodeDetails": "二维码详情",
+    "qrCodeExpiry": "有效期至",
+    "qrCodeStatus": "状态",
+    "qrCodeActive": "有效",
+    "qrCodeInactive": "无效",
+    "qrCodeGenerate": "生成新二维码",
+    "qrCodeGenerating": "正在生成二维码...",
+    "qrCodeError": "生成二维码时出错",
+    "showQRCode": "显示二维码",
+    "yourQRCode": "您的二维码",
+    "clickToViewQR": "点击查看二维码",
+    "approvalStatus": "审批状态",
+    "role": "角色",
+    "lastUpdated": "最后更新时间",
+    "scanQRMessage": "扫描此码以验证您的身份",
+    "generateNewQR": "生成新二维码"
   }
 }

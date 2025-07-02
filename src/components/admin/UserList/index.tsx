@@ -16,7 +16,7 @@ import {
 } from "@prisma/client";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type UserWithRelations = Prisma.UserGetPayload<{ include: {
   citas: true,
@@ -59,6 +59,10 @@ export default function UserList({ users }: { users: UserWithRelations[] }) {
       console.error("Error rejecting user:", error);
     }
   };
+
+  useEffect(()=> {
+
+  }, [])
 
   return (
     <div className="p-6 bg-white rounded-lg shadow-md">

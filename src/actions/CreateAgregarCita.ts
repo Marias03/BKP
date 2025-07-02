@@ -31,12 +31,7 @@ export default async function createAgregarcita(
       throw new Error("Fecha es requerida ");
     }
 
-    // await prisma.cita.create({
-    //   data: {
-    //     ...data,
-    //     clienteId: user.id || "",
-    //   },
-    // });
+  
 
     revalidatePath("/datos");
     return { success: true, message: "Datos guardados correctamente" };

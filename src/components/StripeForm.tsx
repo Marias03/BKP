@@ -43,7 +43,8 @@ export default function StripeForm({
       await fetch("/api/log-payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: 10000 }),
+        body: JSON.stringify({ amount: 1920
+         }),
       });
       setMessage(t("paymentSuccess"));
       onSuccess();
